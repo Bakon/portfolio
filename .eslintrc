@@ -16,16 +16,16 @@
         }
     },
     "rules": {
-        "yoda": "warn",
-        "arrow-parens": "error",
-        "semi": ["warn", "always"],
         "one-var": ["error", {"const": "never", "let": "never"}],
         "no-var": "error",
-        "prefer-const": "warn",
+        "yoda": "warn",
+        "semi": "warn",
+        "arrow-parens": "warn",
         "object-shorthand": "warn",
-        "no-useless-constructor": "error",
-        "no-useless-rename": "error",
+        "prefer-const": "warn",
         "prefer-arrow-callback": "warn",
-        "prefer-rest-params": "warn"
+        "prefer-rest-params": "warn",
+        "no-useless-constructor": "error",
+        "no-useless-rename": "error"
     }
 }

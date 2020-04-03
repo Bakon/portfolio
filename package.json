@@ -1,16 +1,15 @@
 {
     "name": "portfolio",
     "version": "1.0.0",
-    "description": "",
+    "description": "Portfolio Julio Schilders",
     "main": "index.js",
     "scripts": {
         "dev": "next",
-        "build": "next build",
-        "start": "next start"
+        "build": "next build && next export"
     },
     "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "author": "Julio Schilders",
+    "license": "MIT",
     "dependencies": {
         "next": "^9.3.4",
         "react": "^16.13.1",
@@ -23,6 +22,7 @@
         "@types/styled-components": "^5.0.1",
         "@typescript-eslint/eslint-plugin": "^2.26.0",
         "@typescript-eslint/parser": "^2.26.0",
+        "babel-plugin-inline-react-svg": "^1.1.1",
         "babel-plugin-styled-components": "^1.10.7",
         "eslint": "^6.8.0",
         "eslint-config-prettier": "^6.10.1",
@@ -30,5 +30,9 @@
         "eslint-plugin-react": "^7.19.0",
         "prettier": "^2.0.2",
         "typescript": "^3.8.3"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Julicolo/portfolio.git"
     }
 }
