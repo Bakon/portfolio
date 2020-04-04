@@ -3,7 +3,7 @@ import styled, {ThemeProvider} from 'styled-components';
 import Head from 'next/head';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import {lightTheme, darkTheme, spacing} from '../css-util';
+import {lightTheme, darkTheme, spacing, media} from '../css-util';
 
 export default function Main(): ReactElement {
     const [isThemeDark, toggleDarkTheme] = useState(false);
@@ -25,7 +25,6 @@ export default function Main(): ReactElement {
             </Head>
             <StyledContainer>
                 <Header
-                    className="header"
                     isThemeDark={isThemeDark}
                     toggleTheme={(): void => toggleTheme()}
                 />
@@ -35,7 +34,7 @@ export default function Main(): ReactElement {
                     </h1>
                     <h2>Please come back soon :)</h2>
                 </main>
-                <Footer className="footer" />
+                <Footer />
             </StyledContainer>
         </ThemeProvider>
     );
@@ -47,27 +46,24 @@ const StyledContainer = styled.div`
     height: 100vh;
     background: ${({theme}): string => theme.background};
 
-    > .main,
-    .header,
-    .footer {
+    .main {
+        flex: 1;
+        color: ${({theme}): string => theme.color};
         padding: ${spacing.large};
         margin: auto;
         width: 100%;
         max-width: ${spacing.container};
 
-        @media (max-width: 620px) {
+        ${media.mobileL} {
             padding: ${spacing.medium};
         }
     }
 
-    @media (max-width: 620px) {
-        .header {
-            padding-right: 0;
-        }
-    }
+    .header {
+        padding-right: ${spacing.mediumLarge};
 
-    main {
-        flex: 1;
-        color: ${({theme}): string => theme.color};
+        ${media.mobileL} {
+            padding-right: ${spacing.small};
+        }
     }
 `;

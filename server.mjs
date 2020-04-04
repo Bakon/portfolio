@@ -1,5 +1,5 @@
-import express from 'express';
 import next from 'next';
+import express from 'express';
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({dev});
@@ -12,6 +12,7 @@ app.prepare()
         server.get('*', (req, res) => handle(req, res));
 
         server.listen(5000, (err) => {
+            console.log('Now running on port 5000!');
             if (err) throw err;
         });
 

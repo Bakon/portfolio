@@ -1,10 +1,12 @@
 import React, {ReactElement, FC} from 'react';
 import Close from './icons/close.svg';
+import Logo from './icons/logo.svg';
+import Menu from './icons/menu.svg';
 import Moon from './icons/moon.svg';
 import Plus from './icons/plus.svg';
 import Sun from './icons/sun.svg';
 
-const icons: {[index: string]: FC} = {Close, Moon, Plus, Sun};
+const icons: {[index: string]: FC} = {Close, Logo, Menu, Moon, Plus, Sun};
 
 interface SVGProps {
     className?: string;
