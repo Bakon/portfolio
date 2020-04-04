@@ -17,7 +17,6 @@
         "experimentalDecorators": true,
         "skipLibCheck": true,
         "resolveJsonModule": true,
-        "isolatedModules": true,
         "strictNullChecks": true,
         "allowSyntheticDefaultImports": true,
         "allowJs": true,
@@ -27,7 +26,8 @@
         "noImplicitReturns": false,
         "noUnusedLocals": false,
         "noImplicitThis": false,
-        "noImplicitAny": false
+        "noImplicitAny": false,
+        "isolatedModules": true
     },
     "exclude": ["node_modules", "dist"],
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
