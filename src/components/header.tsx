@@ -4,15 +4,20 @@ import SVG from './svg';
 import {spacing, colors, media} from '../css-util';
 
 type Props = {
+    className?: string;
     isThemeDark: boolean;
     toggleTheme: () => void;
 };
 
-export default function Header({isThemeDark, toggleTheme}: Props): ReactElement {
+export default function Header({
+    className,
+    isThemeDark,
+    toggleTheme,
+}: Props): ReactElement {
     const label = `Toggle ${isThemeDark ? 'dark' : 'light'} mode`;
 
     return (
-        <StyledHeader>
+        <StyledHeader className={className}>
             <nav className="nav">
                 <SVG icon="logo" />
                 <div className="name">
@@ -41,7 +46,8 @@ const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: center;
     height: ${spacing.header};
-    background: ${({theme}): string => theme.background};
+    // background: ${({theme}): string => theme.background};
+    background: transparent;
     color: ${({theme}): string => theme.color};
     margin: auto;
     width: 100%;

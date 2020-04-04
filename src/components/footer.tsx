@@ -2,9 +2,13 @@ import React, {ReactElement} from 'react';
 import styled from 'styled-components';
 import {spacing, media} from '../css-util';
 
-export default function Footer(): ReactElement {
+type Props = {
+    className?: string;
+};
+
+export default function Footer({className}: Props): ReactElement {
     return (
-        <StyledFooter>
+        <StyledFooter className={className}>
             <h1>I am foot</h1>
         </StyledFooter>
     );

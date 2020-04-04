@@ -9,6 +9,7 @@ export default function Main(): ReactElement {
     const [isThemeDark, toggleDarkTheme] = useState(false);
 
     useEffect(() => {
+        console.log(globalThis);
         toggleDarkTheme(localStorage.getItem('theme') === 'dark');
     }, []);
 
@@ -25,6 +26,7 @@ export default function Main(): ReactElement {
             </Head>
             <StyledContainer>
                 <Header
+                    className="header"
                     isThemeDark={isThemeDark}
                     toggleTheme={(): void => toggleTheme()}
                 />
