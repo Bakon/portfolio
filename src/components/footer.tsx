@@ -1,15 +1,18 @@
 import React, {ReactElement} from 'react';
 import styled from 'styled-components';
-import {colors} from '../css-util';
 
-export default function Footer(): ReactElement {
+type Props = {
+    className: string;
+};
+
+export default function Footer({className}: Props): ReactElement {
     return (
-        <StyledFooter>
-            <h1>hello world!</h1>
+        <StyledFooter className={className}>
+            <h1>Footer content</h1>
         </StyledFooter>
     );
 }
 
-const StyledFooter = styled.div`
-    background: ${colors.light};
+const StyledFooter = styled.footer`
+    color: ${({theme}): string => theme.color};
 `;
