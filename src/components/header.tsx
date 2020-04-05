@@ -27,30 +27,38 @@ export default function Header({className}: Props): ReactElement {
     return (
         <StyledHeader className={className}>
             <nav className="nav">
-                <SVG icon="logo" />
+                <div className="branding">
+                    <SVG icon="logo" />
+                    <div className="name">
+                        <h3 className="mobile">Julio Schilders</h3>
+                        <h3 className="mobile">JavaScript Dev</h3>
+                    </div>
+                </div>
                 <div className="name">
                     <h3>Julio Schilders</h3>
                     <h3>JavaScript Developer</h3>
-                    <h3 className="mobile">Julio Schilders</h3>
-                    <h3 className="mobile">JavaScript Dev</h3>
                 </div>
                 <div className="links">
                     <span>About me</span>
                     <span>Projects</span>
                     <span>Contact</span>
+                </div>
+                <div className="actions">
+                    <Toggle
+                        checked={theme === 'dark'}
+                        onChange={(e): void =>
+                            window.__setPreferredTheme(
+                                e.target.checked ? 'dark' : 'light'
+                            )
+                        }
+                        icons={{
+                            checked: <SVG icon="moon" />,
+                            unchecked: <SVG icon="sun" />,
+                        }}
+                    />
                     <SVG icon="menu" />
                 </div>
             </nav>
-            <Toggle
-                checked={theme === 'dark'}
-                onChange={(e): void =>
-                    window.__setPreferredTheme(e.target.checked ? 'dark' : 'light')
-                }
-                icons={{
-                    checked: <SVG icon="moon" />,
-                    unchecked: <SVG icon="sun" />,
-                }}
-            />
         </StyledHeader>
     );
 }
@@ -83,13 +91,18 @@ const StyledHeader = styled.header`
     .nav {
         display: flex;
         flex-flow: row nowrap;
+        align-items: center;
         width: 100%;
+
+        ${media.mobileL} {
+            justify-content: space-between;
+        }
     }
 
     svg.logo {
         width: ${multiply(spacing.regularMedium, 3)};
         height: ${multiply(spacing.regularMedium, 3)};
-        margin-right: ${spacing.large};
+        margin-right: ${spacing.mediumLarge};
 
         ${media.mobileL} {
             margin-right: ${spacing.regularMedium};
@@ -101,16 +114,16 @@ const StyledHeader = styled.header`
         width: ${multiply(spacing.regularMedium, 3)};
         height: ${multiply(spacing.regularMedium, 3)};
         fill: ${theme.text};
+        margin-left: ${spacing.mediumLarge};
 
         ${media.tablet} {
             display: flex;
-            margin-right: ${spacing.large};
         }
 
         ${media.mobileL} {
             width: ${spacing.mediumLarge};
             height: ${spacing.mediumLarge};
-            margin-right: ${spacing.medium};
+            margin-left: ${spacing.regularMedium};
         }
     }
 
@@ -142,6 +155,10 @@ const StyledHeader = styled.header`
         flex: 1;
         width: 100%;
 
+        ${media.tablet} {
+            display: none;
+        }
+
         span {
             padding: ${spacing.regularMedium};
             margin: 0 ${spacing.regularMedium};
@@ -152,10 +169,15 @@ const StyledHeader = styled.header`
             &:hover {
                 background: ${colors.blue};
             }
-
-            ${media.tablet} {
-                display: none;
-            }
         }
+    }
+
+    .branding {
+        display: flex;
+    }
+    .actions {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
     }
 `;

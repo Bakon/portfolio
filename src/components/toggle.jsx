@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import styled from 'styled-components';
-import {colors} from 'css-util';
+import {colors, spacing, media} from 'css-util';
 
 /* eslint-disable */
 function pointerCoord(event) {
@@ -37,7 +37,7 @@ export default class Toggle extends PureComponent {
         };
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if ('checked' in nextProps) {
             this.setState({checked: !!nextProps.checked});
             this.previouslyChecked = !!nextProps.checked;

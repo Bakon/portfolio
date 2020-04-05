@@ -32,7 +32,7 @@ export const spacing: {[key: string]: string} = {
 const sizes: {[key: string]: string} = {
     mobileM: '400px',
     mobileL: '540px',
-    tablet: '780px',
+    tablet: '800px',
 };
 
 export const media: {[key: string]: string} = {
