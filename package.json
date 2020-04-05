@@ -8,7 +8,8 @@
         "start": "next start",
         "build": "next build",
         "export": "next export",
-        "prod": "NODE_ENV=production next build && pm2 restart server.mjs"
+        "production": "next build && NODE_ENV=production pm2 restart server.mjs",
+        "redeploy": "git pull && next build && NODE_ENV=production pm2 restart server.mjs"
     },
     "keywords": [],
     "author": "Julio Schilders",
