@@ -2,7 +2,7 @@ import React, {ReactElement, useState, useEffect, SetStateAction} from 'react';
 import styled from 'styled-components';
 import SVG from './svg';
 import Toggle from './toggle';
-import {spacing, theme, colors, media} from '../css-util';
+import {spacing, theme, colors, media, multiply} from '../css-util';
 
 type Props = {
     className?: string;
@@ -64,7 +64,7 @@ const StyledHeader = styled.header`
     margin: auto;
     width: 100%;
     max-width: ${spacing.container};
-    padding: ${spacing.large};
+    padding: ${spacing.medium} ${spacing.mediumLarge};
     padding-right: ${spacing.mediumLarge};
     color: ${theme.text};
     background-color: ${theme.background};
@@ -72,7 +72,7 @@ const StyledHeader = styled.header`
 
     ${media.mobileL} {
         padding: ${spacing.medium};
-        padding-right: ${spacing.small};
+        padding-right: ${spacing.regular};
     }
 
     a {
@@ -87,8 +87,8 @@ const StyledHeader = styled.header`
     }
 
     svg.logo {
-        width: ${spacing.large};
-        height: ${spacing.large};
+        width: ${multiply(spacing.regularMedium, 3)};
+        height: ${multiply(spacing.regularMedium, 3)};
         margin-right: ${spacing.large};
 
         ${media.mobileL} {
@@ -98,8 +98,8 @@ const StyledHeader = styled.header`
 
     svg.menu {
         display: none;
-        width: ${spacing.large};
-        height: ${spacing.large};
+        width: ${multiply(spacing.regularMedium, 3)};
+        height: ${multiply(spacing.regularMedium, 3)};
         fill: ${theme.text};
 
         ${media.tablet} {
@@ -108,7 +108,9 @@ const StyledHeader = styled.header`
         }
 
         ${media.mobileL} {
-            margin-right: ${spacing.regular};
+            width: ${spacing.mediumLarge};
+            height: ${spacing.mediumLarge};
+            margin-right: ${spacing.medium};
         }
     }
 

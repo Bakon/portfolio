@@ -2,9 +2,9 @@ import React, {ReactElement} from 'react';
 import styled from 'styled-components';
 import Header from '../components/header';
 import Main from '../components/main';
-import Footer from '../components/footer';
-import {theme} from '../css-util';
+// import Footer from '../components/footer';
 import GlobalStyle from '../components/global-styles';
+import {theme} from '../css-util';
 
 export default function Index(): ReactElement {
     return (
@@ -13,7 +13,7 @@ export default function Index(): ReactElement {
             <StyledContainer>
                 <Header />
                 <Main />
-                <Footer />
+                {/* <Footer /> */}
             </StyledContainer>
         </React.Fragment>
     );

@@ -25,7 +25,7 @@ export const spacing: {[key: string]: string} = {
     medium: multiply(baseSpacing, 4), // 1.25rem - 20px
     mediumLarge: multiply(baseSpacing, 6), // 1.875rem - 30px
     large: multiply(baseSpacing, 8), // 2.5rem - 40px
-    header: '160px', // 10rem
+    header: multiply(baseSpacing, 18), // 6rem - 90px
     container: '880px', // 55rem
 };
 

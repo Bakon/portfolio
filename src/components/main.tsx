@@ -11,7 +11,7 @@ export default function Main(): ReactElement {
             </Head>
             <StyledMain>
                 <h1>
-                    Hiya, I&apos;m Julio!<span>👋</span>
+                    Hiya, I&apos;m Julio! <span> 👋</span>
                 </h1>
                 <h2>Please come back soon :)</h2>
             </StyledMain>

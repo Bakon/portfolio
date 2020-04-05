@@ -215,8 +215,8 @@ const StyledToggle = styled.div`
     }
 
     .toggle-track {
-        width: 50px;
-        height: 24px;
+        width: 64px;
+        height: 32px;
         padding: 0;
         border-radius: 30px;
         background-color: hsl(222, 14%, 7%);
@@ -225,9 +225,9 @@ const StyledToggle = styled.div`
 
     .toggle-track-check {
         position: absolute;
-        width: 17px;
-        height: 17px;
-        left: 5px;
+        width: 18px;
+        height: 18px;
+        left: 10px;
         top: 0px;
         bottom: 0px;
         margin-top: auto;
@@ -244,9 +244,9 @@ const StyledToggle = styled.div`
 
     .toggle-track-x {
         position: absolute;
-        width: 17px;
-        height: 17px;
-        right: 5px;
+        width: 18px;
+        height: 18px;
+        right: 10px;
         top: 0px;
         bottom: 0px;
         margin-top: auto;
@@ -262,10 +262,10 @@ const StyledToggle = styled.div`
 
     .toggle-thumb {
         position: absolute;
-        top: 1px;
-        left: 1px;
-        width: 22px;
-        height: 22px;
+        top: 2px;
+        left: 2px;
+        width: 28px;
+        height: 28px;
         border-radius: 50%;
         background-color: #fafafa;
         box-sizing: border-box;
@@ -274,15 +274,15 @@ const StyledToggle = styled.div`
     }
 
     .toggle--checked .toggle-thumb {
-        transform: translateX(26px);
+        transform: translateX(32px);
         border-color: #19ab27;
     }
 
     .toggle--focus .toggle-thumb {
-        box-shadow: 0px 0px 2px 3px ${colors.blue};
+        box-shadow: 0px 0px 3px 4px ${colors.blue};
     }
 
     .toggle:active .toggle-thumb {
-        box-shadow: 0px 0px 5px 5px ${colors.blue};
+        box-shadow: 0px 0px 6px 6px ${colors.blue};
     }
 `;
