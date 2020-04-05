@@ -1,17 +1,17 @@
-import {createGlobalStyle} from 'styled-components';
-import {colors} from '../css-util';
+import { createGlobalStyle } from 'styled-components';
+import { colors } from './css-util';
 
-const lightTheme: {[key: string]: string} = {
+const lightTheme: { [key: string]: string } = {
     background: colors.white,
     color: colors.black,
 };
 
-const darkTheme: {[key: string]: string} = {
+const darkTheme: { [key: string]: string } = {
     background: colors.dark,
     color: colors.white,
 };
 
-const GlobalStyle = createGlobalStyle`
+const Stylesheet = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         margin: 0;
         font-size: 18px;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Roboto', 'Arial', sans-serif;
         background-color: var(--bg);
     }
 
@@ -38,9 +38,16 @@ const GlobalStyle = createGlobalStyle`
         --link: ${darkTheme.color};
     }
 
+    // body.dark .toggle-thumb {
+    //     opacity: 1;
+    //     transition: none;
+    //     transform: translateX(0)
+    // }
+
     .toggle--checked .toggle-track,
     .toggle--checked:hover .toggle-track {
         background-color: #000000;
     }
 `;
-export default GlobalStyle;
+
+export default Stylesheet;

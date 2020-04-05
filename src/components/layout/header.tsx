@@ -1,23 +1,19 @@
-import React, {ReactElement, useState, useEffect, SetStateAction} from 'react';
+import React, { ReactElement, useState, useEffect, SetStateAction } from 'react';
 import styled from 'styled-components';
-import SVG from './svg';
-import Toggle from './toggle';
-import {spacing, theme, colors, media, multiply} from '../css-util';
-
-type Props = {
-    className?: string;
-};
+import SVG from '../svg';
+import Toggle from '../toggle';
+import { spacing, theme, colors, media, multiply } from '../../util/css-util';
 
 declare global {
     interface Window {
-        __theme: SetStateAction<null>;
+        __theme: string;
         __onThemeChange: () => SetStateAction<void>;
-        __setPreferredTheme: (e) => void;
+        __setPreferredTheme: (theme: string) => void;
     }
 }
 
-export default function Header({className}: Props): ReactElement {
-    const [theme, setTheme] = useState(null);
+export default function Header({ className }: { className?: string }): ReactElement {
+    const [theme, setTheme] = useState<string>('');
 
     useEffect(() => {
         setTheme(window.__theme);
@@ -30,8 +26,13 @@ export default function Header({className}: Props): ReactElement {
                 <div className="branding">
                     <SVG icon="logo" />
                     <div className="name">
-                        <h3 className="mobile">Julio Schilders</h3>
-                        <h3 className="mobile">JavaScript Dev</h3>
+                        <h3 className="mobile">
+                            J<span className="super-mobile">ulio</span>Schilders
+                        </h3>
+                        <h3 className="mobile">
+                            J<span className="super-mobile">ava</span>S
+                            <span className="super-mobile">cript</span> Dev
+                        </h3>
                     </div>
                 </div>
                 <div className="name">
@@ -46,10 +47,8 @@ export default function Header({className}: Props): ReactElement {
                 <div className="actions">
                     <Toggle
                         checked={theme === 'dark'}
-                        onChange={(e): void =>
-                            window.__setPreferredTheme(
-                                e.target.checked ? 'dark' : 'light'
-                            )
+                        onChange={({ target }): void =>
+                            window.__setPreferredTheme(target.checked ? 'dark' : 'light')
                         }
                         icons={{
                             checked: <SVG icon="moon" />,
@@ -68,15 +67,15 @@ const StyledHeader = styled.header`
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    height: ${spacing.header};
-    margin: auto;
+    margin: 0 auto;
     width: 100%;
     max-width: ${spacing.container};
+    height: ${spacing.header};
     padding: ${spacing.medium} ${spacing.mediumLarge};
     padding-right: ${spacing.mediumLarge};
-    color: ${theme.text};
+
     background-color: ${theme.background};
-    margin-bottom: 1.45rem;
+    color: ${theme.text};
 
     ${media.mobileL} {
         padding: ${spacing.medium};
@@ -144,6 +143,12 @@ const StyledHeader = styled.header`
                 display: flex;
             }
         }
+
+        ${media.mobileS} {
+            .super-mobile {
+                display: none;
+            }
+        }
     }
 
     .links {
@@ -174,6 +179,7 @@ const StyledHeader = styled.header`
     .branding {
         display: flex;
     }
+
     .actions {
         margin-left: auto;
         display: flex;

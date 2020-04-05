@@ -2,14 +2,14 @@
     "name": "portfolio",
     "version": "1.0.0",
     "description": "Portfolio Julio Schilders",
-    "main": "index.js",
+    "main": "index.mjs",
     "scripts": {
-        "dev": "node server.mjs",
+        "dev": "node index.mjs",
         "start": "next start",
         "build": "next build",
         "export": "next export",
-        "production": "next build && NODE_ENV=production pm2 restart server.mjs",
-        "redeploy": "git pull && next build && NODE_ENV=production pm2 restart server.mjs"
+        "production": "next build && NODE_ENV=production pm2 restart index.mjs",
+        "redeploy": "git pull && next build && NODE_ENV=production pm2 restart index.mjs"
     },
     "keywords": [],
     "author": "Julio Schilders",
@@ -41,5 +41,10 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/Julicolo/portfolio.git"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "singleQuote": true,
+        "printWidth": 90
     }
 }
