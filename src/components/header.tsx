@@ -80,7 +80,6 @@ const StyledHeader = styled.header`
 
     ${media.mobileL} {
         padding: ${spacing.medium};
-        padding-right: ${spacing.regular};
     }
 
     a {

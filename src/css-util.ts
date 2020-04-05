@@ -30,7 +30,7 @@ export const spacing: {[key: string]: string} = {
 };
 
 const sizes: {[key: string]: string} = {
-    mobileM: '400px',
+    mobileM: '405px',
     mobileL: '540px',
     tablet: '800px',
 };
