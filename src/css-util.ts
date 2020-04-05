@@ -2,22 +2,19 @@ export function multiply(unit: string, factor: number): string {
     return parseFloat(unit) * factor + unit.toString().replace(/^\d*\.?\d*/, '');
 }
 
+export const theme: {[key: string]: string} = {
+    background: 'var(--bg)',
+    header: 'var(--header)',
+    text: 'var(--text)',
+    link: 'var(--link)',
+};
+
 export const colors: {[key: string]: string} = {
     black: '#001F3F',
     dark: '#282c34',
     white: '#FFF',
     blue: '#4b9acd',
     green: '#5aac44',
-};
-
-export const lightTheme: {[key: string]: string} = {
-    background: colors.white,
-    color: colors.black,
-};
-
-export const darkTheme: {[key: string]: string} = {
-    background: colors.dark,
-    color: colors.white,
 };
 
 const baseSpacing = '0.3125rem';

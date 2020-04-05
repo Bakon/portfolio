@@ -1,20 +1,28 @@
-import React, {ReactElement} from 'react';
+import React, {ReactElement, useState, useEffect, SetStateAction} from 'react';
 import styled from 'styled-components';
 import SVG from './svg';
-import {spacing, colors, media} from '../css-util';
+import Toggle from './toggle';
+import {spacing, theme, colors, media} from '../css-util';
 
 type Props = {
     className?: string;
-    isThemeDark: boolean;
-    toggleTheme: () => void;
 };
 
-export default function Header({
-    className,
-    isThemeDark,
-    toggleTheme,
-}: Props): ReactElement {
-    const label = `Toggle ${isThemeDark ? 'dark' : 'light'} mode`;
+declare global {
+    interface Window {
+        __theme: SetStateAction<null>;
+        __onThemeChange: () => SetStateAction<void>;
+        __setPreferredTheme: (e) => void;
+    }
+}
+
+export default function Header({className}: Props): ReactElement {
+    const [theme, setTheme] = useState(null);
+
+    useEffect(() => {
+        setTheme(window.__theme);
+        window.__onThemeChange = (): SetStateAction<void> => setTheme(window.__theme);
+    }, []);
 
     return (
         <StyledHeader className={className}>
@@ -33,9 +41,16 @@ export default function Header({
                     <SVG icon="menu" />
                 </div>
             </nav>
-            <button className="theme-switcher" aria-label={label} title={label}>
-                <SVG icon={isThemeDark ? 'sun' : 'moon'} onClick={toggleTheme} />
-            </button>
+            <Toggle
+                checked={theme === 'dark'}
+                onChange={(e): void =>
+                    window.__setPreferredTheme(e.target.checked ? 'dark' : 'light')
+                }
+                icons={{
+                    checked: <SVG icon="moon" />,
+                    unchecked: <SVG icon="sun" />,
+                }}
+            />
         </StyledHeader>
     );
 }
@@ -46,18 +61,23 @@ const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: center;
     height: ${spacing.header};
-    // background: ${({theme}): string => theme.background};
-    background: transparent;
-    color: ${({theme}): string => theme.color};
     margin: auto;
     width: 100%;
     max-width: ${spacing.container};
     padding: ${spacing.large};
     padding-right: ${spacing.mediumLarge};
+    color: ${theme.text};
+    background-color: ${theme.background};
+    margin-bottom: 1.45rem;
 
     ${media.mobileL} {
         padding: ${spacing.medium};
         padding-right: ${spacing.small};
+    }
+
+    a {
+        text-decoration: none;
+        color: ${theme.link};
     }
 
     .nav {
@@ -66,30 +86,29 @@ const StyledHeader = styled.header`
         width: 100%;
     }
 
-    svg {
+    svg.logo {
         width: ${spacing.large};
         height: ${spacing.large};
+        margin-right: ${spacing.large};
 
-        &.logo {
+        ${media.mobileL} {
+            margin-right: ${spacing.regularMedium};
+        }
+    }
+
+    svg.menu {
+        display: none;
+        width: ${spacing.large};
+        height: ${spacing.large};
+        fill: ${theme.text};
+
+        ${media.tablet} {
+            display: flex;
             margin-right: ${spacing.large};
-
-            ${media.mobileL} {
-                margin-right: ${spacing.regularMedium};
-            }
         }
 
-        &.menu {
-            display: none;
-            fill: ${({theme}): string => theme.color};
-
-            ${media.tablet} {
-                display: flex;
-                margin-right: ${spacing.large};
-            }
-
-            ${media.mobileL} {
-                margin-right: ${spacing.regular};
-            }
+        ${media.mobileL} {
+            margin-right: ${spacing.regular};
         }
     }
 
@@ -136,12 +155,5 @@ const StyledHeader = styled.header`
                 display: none;
             }
         }
-    }
-
-    .theme-switcher {
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: ${spacing.regularMedium};
     }
 `;

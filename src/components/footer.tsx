@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 import styled from 'styled-components';
-import {spacing, media} from '../css-util';
+import {spacing, media, theme} from '../css-util';
 
 type Props = {
     className?: string;
@@ -15,7 +15,7 @@ export default function Footer({className}: Props): ReactElement {
 }
 
 const StyledFooter = styled.footer`
-    color: ${({theme}): string => theme.color};
+    color: ${theme.text};
     padding: ${spacing.large};
     margin: auto;
     width: 100%;
