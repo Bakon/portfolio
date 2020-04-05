@@ -279,10 +279,10 @@ const StyledToggle = styled.div`
     }
 
     .toggle--focus .toggle-thumb {
-        box-shadow: 0px 0px 3px 4px ${colors.blue};
+        box-shadow: 0px 0px 2px 3px ${colors.blue};
     }
 
     .toggle:active .toggle-thumb {
-        box-shadow: 0px 0px 6px 6px ${colors.blue};
+        box-shadow: 0px 0px 4px 4px ${colors.blue};
     }
 `;
