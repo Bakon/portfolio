@@ -12,7 +12,7 @@ declare global {
     }
 }
 
-export default function Header({ className }: { className?: string }): ReactElement {
+const Header = ({ className }: { className?: string }): ReactElement => {
     const [theme, setTheme] = useState<string>('');
 
     useEffect(() => {
@@ -51,8 +51,8 @@ export default function Header({ className }: { className?: string }): ReactElem
                             window.__setPreferredTheme(target.checked ? 'dark' : 'light')
                         }
                         icons={{
-                            checked: <SVG icon="moon" />,
-                            unchecked: <SVG icon="sun" />,
+                            checked: <SVG icon="sun" />,
+                            unchecked: <SVG icon="moon" />,
                         }}
                     />
                     <SVG icon="menu" />
@@ -60,7 +60,9 @@ export default function Header({ className }: { className?: string }): ReactElem
             </nav>
         </StyledHeader>
     );
-}
+};
+
+export default Header;
 
 const StyledHeader = styled.header`
     display: flex;

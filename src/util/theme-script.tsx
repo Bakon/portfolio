@@ -28,13 +28,13 @@ const ThemeScript = (): ReactElement => (
                         } catch (error) {}
                     }
 
-                    var systemPreference = window.matchMedia('(prefers-color-scheme: dark)');
+                    var systemPreferences = window.matchMedia('(prefers-color-scheme: dark)');
 
-                    systemPreference.addListener(function(event) {
+                    systemPreferences.addListener(function(event) {
                         window.__setPreferredTheme(event.matches ? 'dark' : 'light');
                     });
 
-                    setTheme(preferredTheme || (systemPreference.matches ? 'dark' : 'light'));
+                    setTheme(preferredTheme || (systemPreferences.matches ? 'dark' : 'light'));
                 })();
             `,
         }}

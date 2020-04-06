@@ -37,17 +37,6 @@ const Stylesheet = createGlobalStyle`
         --text: ${darkTheme.color};
         --link: ${darkTheme.color};
     }
-
-    // body.dark .toggle-thumb {
-    //     opacity: 1;
-    //     transition: none;
-    //     transform: translateX(0)
-    // }
-
-    .toggle--checked .toggle-track,
-    .toggle--checked:hover .toggle-track {
-        background-color: #000000;
-    }
 `;
 
 export default Stylesheet;

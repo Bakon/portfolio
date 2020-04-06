@@ -4,78 +4,50 @@ import React, {
     useRef,
     ReactElement,
     FocusEvent,
-    TouchEvent,
     MouseEvent,
 } from 'react';
 import styled from 'styled-components';
 import { colors } from '../util/css-util';
 
-type EventProps = {
-    changedTouches?: React.TouchList;
-    pageX?: number;
-    pageY?: number;
-};
-
-const pointerCoord = (event: EventProps): { x: number; y: number | undefined } => {
-    // get coordinates for either a mouse click
-    // or a touch depending on the given event
-    if (event) {
-        const changedTouches = event.changedTouches;
-
-        if (changedTouches && changedTouches.length > 0) {
-            const touch = changedTouches[0];
-            return { x: touch.clientX, y: touch.clientY };
-        }
-        const { pageX, pageY } = event;
-
-        if (pageX !== undefined) return { x: pageX, y: pageY };
-    }
-    return { x: 0, y: 0 };
-};
-
 type Props = {
-    className?: string;
-    disabled?: boolean;
-    icons: { [key: string]: ReactElement };
-    checked?: boolean;
-    onFocus?: (event: FocusEvent) => void;
     onBlur?: (event: FocusEvent) => void;
+    onFocus?: (event: FocusEvent) => void;
     onChange?: (event: { target: { checked: boolean } }) => void;
+    icons: { [key: string]: ReactElement };
+    className?: string;
+    checked: boolean;
+    disabled?: boolean;
 };
 
 const Toggle = ({
-    className,
-    onFocus,
     onBlur,
-    icons,
+    onFocus,
     onChange,
+    icons,
+    className,
     checked,
     disabled = false,
 }: Props): ReactElement => {
     const inputRef = useRef<HTMLInputElement>(null);
     const toggleRef = useRef<HTMLDivElement>(null);
-    const [isChecked, setChecked] = useState(!checked);
+    const [isChecked, setChecked] = useState(checked);
     const [isFocussed, setFocus] = useState(false);
-    const [isPreviouslyChecked, setPreviouslyChecked] = useState<boolean | null>(null);
-    const [isFocussedAtTouchStart, setFocussedAtTouchStart] = useState(false);
-    const [isTouchStarted, setTouchStarted] = useState(false);
-    const [startX, setStartX] = useState<null | number>(null);
-    const [isTouched, setTouch] = useState(false);
 
     useEffect(() => {
-        console.log(checked !== isChecked);
-        console.log(toggleRef.current);
-        if (checked !== isChecked) {
-            setChecked(!isChecked);
+        const toggle = toggleRef.current;
+
+        if (toggle && window.__theme === 'dark') {
+            toggle.classList.add('fade');
+            setChecked(window.__theme === 'dark');
+
+            setTimeout(() => toggle.classList.remove('fade'), 200);
         }
-    }, [checked]);
+    }, []);
 
     const handleClick = (event: MouseEvent): void => {
         const checkbox = inputRef.current;
 
         if (checkbox === null) return;
-
-        setPreviouslyChecked(checkbox.checked);
 
         if (event.target !== checkbox) {
             event.preventDefault();
@@ -87,89 +59,27 @@ const Toggle = ({
         setChecked(checkbox.checked);
     };
 
-    const handleTouchStart = (event: EventProps): void => {
-        setStartX(pointerCoord(event).x);
-        setTouchStarted(true);
-        setFocussedAtTouchStart(isFocussed);
-        setFocus(true);
-    };
-
-    const handleTouchMove = (event: EventProps): void => {
-        if (!isTouchStarted) return;
-
-        setTouch(true);
-
-        if (startX != null) {
-            const currentX = pointerCoord(event).x;
-
-            if (isChecked && currentX + 15 < startX) {
-                setChecked(false);
-                setStartX(currentX);
-            } else if (!isChecked && currentX - 15 > startX) {
-                setChecked(true);
-                setStartX(currentX);
-            }
-        }
-    };
-
-    const handleTouchEnd = (event: TouchEvent): void => {
-        const checkbox = inputRef.current;
-
-        if (!isTouched || checkbox === null) return;
-
-        event.preventDefault();
-
-        if (startX != null) {
-            if (isPreviouslyChecked !== isChecked) checkbox.click();
-
-            setTouchStarted(false);
-            setStartX(null);
-            setTouch(false);
-        }
-
-        if (!isFocussedAtTouchStart) setFocus(false);
-    };
-
-    const handleTouchCancel = (): void => {
-        if (startX != null) {
-            setTouchStarted(false);
-            setStartX(null);
-            setTouch(false);
-        }
-
-        if (!isFocussedAtTouchStart) setFocus(false);
-    };
-
     const handleFocus = (event: FocusEvent): void => {
         if (onFocus) onFocus(event);
 
-        setFocussedAtTouchStart(true);
         setFocus(true);
     };
 
     const handleBlur = (event: FocusEvent): void => {
         if (onBlur) onBlur(event);
 
-        setFocussedAtTouchStart(false);
         setFocus(false);
     };
 
     return (
         <StyledToggle
             className={className}
-            ref={toggleRef}
             disabled={disabled}
             isFocussed={isFocussed}
             isChecked={isChecked}
+            onClick={handleClick}
         >
-            <div
-                className="toggle"
-                onClick={handleClick}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-                onTouchCancel={handleTouchCancel}
-            >
+            <div className="toggle" ref={toggleRef}>
                 <div className="toggle-track">
                     <div className="toggle-track-check">{icons['checked']}</div>
                     <div className="toggle-track-x">{icons['unchecked']}</div>
@@ -177,7 +87,7 @@ const Toggle = ({
                 <div className="toggle-thumb" />
                 <input
                     onChange={onChange}
-                    checked={checked}
+                    checked={isChecked}
                     ref={inputRef}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
@@ -189,31 +99,18 @@ const Toggle = ({
         </StyledToggle>
     );
 };
-
 export default Toggle;
 
 type StyleProps = {
     disabled: boolean;
     isFocussed: boolean;
-    isChecked: boolean;
+    isChecked: boolean | undefined;
 };
 
 const StyledToggle = styled.div<StyleProps>`
     display: flex;
     align-items: center;
     height: 100%;
-
-    &.initial-render {
-        .toggle-thumb {
-            transform: translateX(32px);
-            transition: none;
-        }
-
-        .toggle-track-x {
-            opacity: 1;
-            transition: none;
-        }
-    }
 
     .toggle {
         touch-action: pan-x;
@@ -230,6 +127,13 @@ const StyledToggle = styled.div<StyleProps>`
 
         &:active .toggle-thumb {
             box-shadow: 0px 0px 5px 5px ${colors.blue};
+        }
+
+        &.fade {
+            .toggle-thumb {
+                transform: translateX(32px);
+                transition: none;
+            }
         }
     }
 
@@ -263,7 +167,7 @@ const StyledToggle = styled.div<StyleProps>`
         margin-top: auto;
         margin-bottom: auto;
         line-height: 0;
-        transition: opacity 0.25s ease;
+        transition: opacity 0s ease;
         opacity: ${({ isChecked }): number => (isChecked ? 1 : 0)};
     }
 
