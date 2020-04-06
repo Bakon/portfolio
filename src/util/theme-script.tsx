@@ -1,5 +1,8 @@
 import React, { ReactElement } from 'react';
 
+// The script must be injected BEFORE the rendering of the pages.
+// If the user / system prefers a dark theme, the background color must be set beforehand.
+
 const ThemeScript = (): ReactElement => (
     <script
         dangerouslySetInnerHTML={{

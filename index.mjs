@@ -2,7 +2,7 @@ import next from 'next';
 import express from 'express';
 
 const dev = process.env.NODE_ENV !== 'production';
-const app = next({dev});
+const app = next({ dev });
 const handle = app.getRequestHandler();
 
 app.prepare()
@@ -18,11 +18,11 @@ app.prepare()
 
         server.get('/p/:id', (req, res) => {
             const actualPage = '/post';
-            const queryParams = {id: req.params.id};
+            const queryParams = { id: req.params.id };
             app.render(req, res, actualPage, queryParams);
         });
     })
-    .catch(({stack}) => {
+    .catch(({ stack }) => {
         console.error(stack);
         process.exit(1);
     });

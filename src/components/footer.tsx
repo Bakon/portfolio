@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import { spacing, media, theme } from '../util/css-util';
 
 const Footer = ({ className }: { className?: string }): ReactElement => (
-    <StyledFooter className={className}>
-        <h1>I am foot</h1>
-    </StyledFooter>
+    <StyledFooter className={className}> </StyledFooter>
 );
 
 export default Footer;

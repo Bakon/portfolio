@@ -4,10 +4,35 @@ import React, {
     useRef,
     ReactElement,
     FocusEvent,
+    TouchEvent,
     MouseEvent,
+    TouchList,
 } from 'react';
 import styled from 'styled-components';
 import { colors } from '../util/css-util';
+
+type EventProps = {
+    changedTouches?: TouchList;
+    pageX?: number;
+    pageY?: number;
+};
+
+const pointerCoord = (event: EventProps): { x: number; y: number | undefined } => {
+    // get coordinates for either a mouse click
+    // or a touch depending on the given event
+    if (event) {
+        const changedTouches = event.changedTouches;
+
+        if (changedTouches && changedTouches.length > 0) {
+            const touch = changedTouches[0];
+            return { x: touch.clientX, y: touch.clientY };
+        }
+        const { pageX, pageY } = event;
+
+        if (pageX !== undefined) return { x: pageX, y: pageY };
+    }
+    return { x: 0, y: 0 };
+};
 
 type Props = {
     onBlur?: (event: FocusEvent) => void;
@@ -32,6 +57,11 @@ const Toggle = ({
     const toggleRef = useRef<HTMLDivElement>(null);
     const [isChecked, setChecked] = useState(checked);
     const [isFocussed, setFocus] = useState(false);
+    const [isPreviouslyChecked, setPreviouslyChecked] = useState<boolean | null>(null);
+    const [isFocussedAtTouchStart, setFocussedAtTouchStart] = useState(false);
+    const [isTouchStarted, setTouchStarted] = useState(false);
+    const [startX, setStartX] = useState<null | number>(null);
+    const [isTouched, setTouch] = useState(false);
 
     useEffect(() => {
         const toggle = toggleRef.current;
@@ -49,6 +79,8 @@ const Toggle = ({
 
         if (checkbox === null) return;
 
+        setPreviouslyChecked(checkbox.checked);
+
         if (event.target !== checkbox) {
             event.preventDefault();
             checkbox.focus();
@@ -59,25 +91,84 @@ const Toggle = ({
         setChecked(checkbox.checked);
     };
 
+    const handleTouchStart = (event: EventProps): void => {
+        setStartX(pointerCoord(event).x);
+        setTouchStarted(true);
+        setFocussedAtTouchStart(isFocussed);
+        setFocus(true);
+    };
+
+    const handleTouchMove = (event: EventProps): void => {
+        if (!isTouchStarted) return;
+
+        setTouch(true);
+
+        if (startX != null) {
+            const currentX = pointerCoord(event).x;
+
+            if (isChecked && currentX + 15 < startX) {
+                setChecked(false);
+                setStartX(currentX);
+            } else if (!isChecked && currentX - 15 > startX) {
+                setChecked(true);
+                setStartX(currentX);
+            }
+        }
+    };
+
+    const handleTouchEnd = (event: TouchEvent): void => {
+        const checkbox = inputRef.current;
+
+        if (!isTouched || checkbox === null) return;
+
+        event.preventDefault();
+
+        if (startX != null) {
+            if (isPreviouslyChecked !== isChecked) checkbox.click();
+
+            setTouchStarted(false);
+            setStartX(null);
+            setTouch(false);
+        }
+
+        if (!isFocussedAtTouchStart) setFocus(false);
+    };
+
+    const handleTouchCancel = (): void => {
+        if (startX != null) {
+            setTouchStarted(false);
+            setStartX(null);
+            setTouch(false);
+        }
+
+        if (!isFocussedAtTouchStart) setFocus(false);
+    };
+
     const handleFocus = (event: FocusEvent): void => {
         if (onFocus) onFocus(event);
 
+        setFocussedAtTouchStart(true);
         setFocus(true);
     };
 
     const handleBlur = (event: FocusEvent): void => {
         if (onBlur) onBlur(event);
 
+        setFocussedAtTouchStart(false);
         setFocus(false);
     };
 
     return (
         <StyledToggle
             className={className}
+            onClick={handleClick}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchCancel}
             disabled={disabled}
             isFocussed={isFocussed}
             isChecked={isChecked}
-            onClick={handleClick}
         >
             <div className="toggle" ref={toggleRef}>
                 <div className="toggle-track">
@@ -86,9 +177,9 @@ const Toggle = ({
                 </div>
                 <div className="toggle-thumb" />
                 <input
+                    ref={inputRef}
                     onChange={onChange}
                     checked={isChecked}
-                    ref={inputRef}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                     className="toggle-screenreader-only"
@@ -113,15 +204,15 @@ const StyledToggle = styled.div<StyleProps>`
     height: 100%;
 
     .toggle {
-        touch-action: pan-x;
         display: inline-block;
         position: relative;
         cursor: pointer;
         background-color: transparent;
         border: 0;
         padding: 0;
-        -webkit-touch-callout: none;
         user-select: none;
+        touch-action: pan-x;
+        -webkit-touch-callout: none;
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         -webkit-tap-highlight-color: transparent;
 

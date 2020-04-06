@@ -1,21 +1,19 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import Layout from '../components';
 import { spacing, theme, media } from '../util/css-util';
+import { NextPage } from 'next';
 
-const Main = (): ReactElement => (
-    <Layout>
+const Main: NextPage = () => (
+    <StyledMain>
         <Head>
             <title>hello world!</title>
         </Head>
-        <StyledMain>
-            <h1>
-                Hiya, I&apos;m Julio! <span> 👋</span>
-            </h1>
-            <h2>Please come back soon :)</h2>
-        </StyledMain>
-    </Layout>
+        <h1>
+            Hiya, I&apos;m Julio! <span> 👋</span>
+        </h1>
+        <h2>Please come back soon :)</h2>
+    </StyledMain>
 );
 
 export default Main;

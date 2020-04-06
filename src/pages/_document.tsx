@@ -1,44 +1,59 @@
-import React, { ReactElement, ReactNodeArray } from 'react';
-import Document, { Head, Main, NextScript, DocumentInitialProps } from 'next/document';
+import React, { ReactElement } from 'react';
+import Document, {
+    Html,
+    Head,
+    Main,
+    NextScript,
+    DocumentContext,
+    DocumentInitialProps,
+} from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import { RenderPageResult } from 'next/dist/next-server/lib/utils';
 import ThemeScript from '../util/theme-script';
 
-export default class extends Document<{ stylesheet: ReactNodeArray }> {
-    static async getInitialProps({ renderPage }): Promise<DocumentInitialProps> {
-        const sheet = new ServerStyleSheet();
-        const page = renderPage((App) => (props: ReactElement): ReactElement =>
-            sheet.collectStyles(<App {...props} />)
-        );
+export default class extends Document {
+    static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
+        const stylesheet = new ServerStyleSheet();
+        const originalRenderPage = ctx.renderPage;
 
-        const stylesheet = sheet.getStyleElement();
+        try {
+            ctx.renderPage = (): RenderPageResult | Promise<RenderPageResult> =>
+                originalRenderPage({
+                    enhanceApp: (App) => (props): ReactElement =>
+                        stylesheet.collectStyles(<App {...props} />),
+                });
 
-        return { ...page, stylesheet };
+            const initialProps = await Document.getInitialProps(ctx);
+            return {
+                ...initialProps,
+                styles: [initialProps.styles, stylesheet.getStyleElement()],
+            };
+        } finally {
+            stylesheet.seal();
+        }
     }
 
     render(): ReactElement {
-        const { stylesheet } = this.props;
-
         return (
-            <html lang="en">
+            <Html lang="en">
+                <link rel="canonical" href="https://jschilders.com" />
                 <link
                     rel="shortcut icon"
                     type="image/x-icon"
                     href="assets/icons/favicon.ico"
                 />
-                <link rel="canonical" href="https://jschilders.com" />
-                <meta name="author" content="Julio Schilders" />
                 <meta
                     name="description"
                     content="Portfolio Julio Schilders, Javascript developer"
                 />
-                {stylesheet}
+                <meta name="author" content="Julio Schilders" />
                 <Head />
                 <body>
                     <ThemeScript />
                     <Main />
                     <NextScript />
                 </body>
-            </html>
+            </Html>
         );
     }
 }
