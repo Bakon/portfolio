@@ -27,7 +27,7 @@ const Header = ({ className }: { className?: string }): ReactElement => {
                     <SVG icon="logo" />
                     <div className="name">
                         <h3 className="mobile">
-                            J<span className="super-mobile">ulio</span>Schilders
+                            J<span className="super-mobile">ulio</span> &nbsp;Schilders
                         </h3>
                         <h3 className="mobile">
                             J<span className="super-mobile">ava</span>S
@@ -92,6 +92,7 @@ const StyledHeader = styled.header`
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
+        height: ${spacing.extraLarge};
         width: 100%;
 
         ${media.mobileL} {
@@ -180,6 +181,7 @@ const StyledHeader = styled.header`
 
     .branding {
         display: flex;
+        height: 100%;
     }
 
     .actions {
