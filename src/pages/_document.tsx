@@ -3,17 +3,21 @@ import Document, { Head, Main, NextScript, DocumentInitialProps } from 'next/doc
 import { ServerStyleSheet } from 'styled-components';
 import ThemeScript from '../util/theme-script';
 
-export default class extends Document<{ styleTags: ReactNodeArray }> {
+export default class extends Document<{ stylesheet: ReactNodeArray }> {
     static async getInitialProps({ renderPage }): Promise<DocumentInitialProps> {
         const sheet = new ServerStyleSheet();
         const page = renderPage((App) => (props: ReactElement): ReactElement =>
             sheet.collectStyles(<App {...props} />)
         );
 
-        return { ...page };
+        const stylesheet = sheet.getStyleElement();
+
+        return { ...page, stylesheet };
     }
 
     render(): ReactElement {
+        const { stylesheet } = this.props;
+
         return (
             <html lang="en">
                 <link
@@ -27,6 +31,7 @@ export default class extends Document<{ styleTags: ReactNodeArray }> {
                     name="description"
                     content="Portfolio Julio Schilders, Javascript developer"
                 />
+                {stylesheet}
                 <Head />
                 <body>
                     <ThemeScript />
