@@ -1,24 +1,25 @@
-import React from 'react';
-import { NextComponentType } from 'next';
-import { Head, Main, NextScript } from 'next/document';
-import ThemeScript from '../util/theme-script';
+import React, { ReactNodeArray, ReactElement } from 'react';
+import styled from 'styled-components';
+import Stylesheet from '../util/stylesheet';
+import { theme } from '../util/css-util';
+import Header from './header';
+// import Footer from './footer';
 
-const Layout: NextComponentType = () => (
-    <html lang="en">
-        <link rel="shortcut icon" type="image/x-icon" href="assets/icons/favicon.ico" />
-        <link rel="canonical" href="https://jschilders.com" />
-        <meta name="author" content="Julio Schilders" />
-        <meta
-            name="description"
-            content="Portfolio Julio Schilders, Javascript developer"
-        />
-        <Head />
-        <body>
-            <ThemeScript />
-            <Main />
-            <NextScript />
-        </body>
-    </html>
+const Layout = ({ children }: { children: ReactNodeArray }): ReactElement => (
+    <StyledContainer>
+        <Stylesheet />
+        <Header />
+        {children}
+        {/* <Footer /> */}
+    </StyledContainer>
 );
 
 export default Layout;
+
+const StyledContainer = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100vh;
+
+    background: ${theme.background};
+`;

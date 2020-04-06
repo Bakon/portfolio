@@ -1,8 +1,8 @@
 import React, { ReactElement, useState, useEffect, SetStateAction } from 'react';
 import styled from 'styled-components';
-import SVG from '../svg';
-import Toggle from '../toggle';
-import { spacing, theme, colors, media, multiply } from '../../util/css-util';
+import SVG from './svg';
+import Toggle from './toggle';
+import { spacing, theme, colors, media, multiply } from '../util/css-util';
 
 declare global {
     interface Window {

@@ -1,12 +1,8 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
-import { spacing, media, theme } from '../../util/css-util';
+import { spacing, media, theme } from '../util/css-util';
 
-type Props = {
-    className?: string;
-};
-
-const Footer = ({ className }: Props): ReactElement => (
+const Footer = ({ className }: { className?: string }): ReactElement => (
     <StyledFooter className={className}>
         <h1>I am foot</h1>
     </StyledFooter>

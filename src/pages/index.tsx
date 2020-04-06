@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
-import Layout from '../components/layout';
+import Layout from '../components';
 import { spacing, theme, media } from '../util/css-util';
 
-const App = (): ReactElement => (
+const Main = (): ReactElement => (
     <Layout>
         <Head>
             <title>hello world!</title>
@@ -18,7 +18,7 @@ const App = (): ReactElement => (
     </Layout>
 );
 
-export default App;
+export default Main;
 
 const StyledMain = styled.main`
     flex: 1;
