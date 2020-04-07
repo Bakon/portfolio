@@ -17,7 +17,7 @@ const Header = ({ className }: { className?: string }): ReactElement => {
 
     useEffect(() => {
         setTheme(window.__theme);
-        window.__onThemeChange = (): SetStateAction<void> => setTheme(window.__theme);
+        window.__onThemeChange = (): SetStateAction<void> => setTheme(theme);
     });
 
     return (
@@ -46,7 +46,6 @@ const Header = ({ className }: { className?: string }): ReactElement => {
                 </div>
                 <div className="actions">
                     <Toggle
-                        checked={theme === 'light'}
                         onClick={(): void =>
                             window.__setTheme(
                                 window.__theme === 'dark' ? 'light' : 'dark'

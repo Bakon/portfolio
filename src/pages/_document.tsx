@@ -8,7 +8,7 @@ import Document, {
     DocumentInitialProps,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import ThemeScript from '../util/toggle-theme';
+import ThemeScript from '../util/toggle-script';
 
 export default class extends Document {
     static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {

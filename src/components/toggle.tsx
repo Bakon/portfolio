@@ -5,24 +5,21 @@ import { colors } from '../util/css-util';
 type Props = {
     onClick: () => SetStateAction<void>;
     icons: { [key: string]: ReactElement };
-    checked: boolean | undefined;
     className?: string;
 };
 
-const Toggle = ({ className, onClick, checked, icons }: Props): ReactElement => {
+const Toggle = ({ className, onClick, icons }: Props): ReactElement => {
     const [hasClicked, toggleFirstClick] = useState(false);
 
     return (
         <StyledToggle
             className={className}
-            hasClicked={hasClicked}
-            checked={checked}
             onClick={(): void => {
                 toggleFirstClick(true);
                 onClick();
             }}
         >
-            <div className="thumb" />
+            <div className={`thumb ${hasClicked ? 'fade' : ''}`} />
             <div className="track">
                 <div className="track-button checked">{icons['checked']}</div>
                 <div className="track-button unchecked">{icons['unchecked']}</div>
@@ -33,12 +30,7 @@ const Toggle = ({ className, onClick, checked, icons }: Props): ReactElement => 
 
 export default Toggle;
 
-type StyleProps = {
-    checked: boolean | undefined;
-    hasClicked: boolean;
-};
-
-const StyledToggle = styled.div<StyleProps>`
+const StyledToggle = styled.div`
     display: flex;
     align-items: center;
     height: 100%;
@@ -57,25 +49,16 @@ const StyledToggle = styled.div<StyleProps>`
         box-shadow: 0px 0px 5px 5px ${colors.blue};
     }
 
-    * {
-        transition: ${({ hasClicked }): string => (hasClicked ? '' : 'none !important')};
-    }
-
     .thumb {
         position: absolute;
         top: 4px;
-        left: ${({ checked, hasClicked }): number =>
-            !hasClicked && checked ? -34 : -2}px;
         width: 24px;
         height: 24px;
         border-radius: 50%;
         z-index: 1000;
         background-color: ${colors.snow};
         box-sizing: border-box;
-        transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-        transform: translateX(
-            ${({ checked, hasClicked }): number => (hasClicked && checked ? 6 : 38)}px
-        );
+        transform: translateX(40px);
     }
 
     .track {
@@ -84,7 +67,6 @@ const StyledToggle = styled.div<StyleProps>`
         padding: 0;
         border-radius: 30px;
         background-color: hsl(222, 14%, 7%);
-        transition: all 0.2s ease;
 
         &-button {
             position: absolute;

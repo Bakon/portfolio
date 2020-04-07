@@ -21,21 +21,33 @@ const Stylesheet = createGlobalStyle`
         font-size: 18px;
         font-family: 'Roboto', 'Arial', sans-serif;
         background-color: var(--bg);
-    }
 
-    body.light {
-        --bg: ${lightTheme.background};
-        --header: ${lightTheme.color};
-        --text: ${lightTheme.color};
-        --link: ${lightTheme.color};
-    }
+        &.light {
+            --bg: ${lightTheme.background};
+            --header: ${lightTheme.color};
+            --text: ${lightTheme.color};
+            --link: ${lightTheme.color};
 
-    body.dark {
-        -webkit-font-smoothing: antialiased;
-        --bg: ${darkTheme.background};
-        --header: ${darkTheme.color};
-        --text: ${darkTheme.color};
-        --link: ${darkTheme.color};
+            .thumb {
+                left: -36px
+            }
+        }
+
+        &.dark {
+            -webkit-font-smoothing: antialiased;
+            --bg: ${darkTheme.background};
+            --header: ${darkTheme.color};
+            --text: ${darkTheme.color};
+            --link: ${darkTheme.color};
+
+            .thumb {
+                left: -4px;
+            }
+        }
+
+        .thumb.fade {
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms !important;
+        }
     }
 `;
 
