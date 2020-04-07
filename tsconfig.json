@@ -30,5 +30,11 @@
         "isolatedModules": true
     },
     "exclude": ["node_modules", "out"],
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "src/components/toggle.jsx",
+        "src/components/theme-toggle.jsx"
+    ]
 }

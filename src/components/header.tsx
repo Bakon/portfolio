@@ -1,25 +1,10 @@
 import React, { ReactElement, useState, useEffect, SetStateAction } from 'react';
 import styled from 'styled-components';
 import SVG from './svg';
-import Toggle from './toggle';
+import Toggle from './theme-toggle';
 import { spacing, theme, colors, media, multiply } from '../util/css-util';
 
-declare global {
-    interface Window {
-        __theme: string;
-        __onThemeChange: () => SetStateAction<void>;
-        __setPreferredTheme: (theme: string) => void;
-    }
-}
-
 const Header = ({ className }: { className?: string }): ReactElement => {
-    const [theme, setTheme] = useState<string>('');
-
-    useEffect(() => {
-        setTheme(window.__theme);
-        window.__onThemeChange = (): SetStateAction<void> => setTheme(window.__theme);
-    }, []);
-
     return (
         <StyledHeader className={className}>
             <nav className="nav">
@@ -45,16 +30,7 @@ const Header = ({ className }: { className?: string }): ReactElement => {
                     <span>Contact</span>
                 </div>
                 <div className="actions">
-                    <Toggle
-                        checked={theme === 'dark'}
-                        onChange={({ target }): void =>
-                            window.__setPreferredTheme(target.checked ? 'dark' : 'light')
-                        }
-                        icons={{
-                            checked: <SVG icon="sun" />,
-                            unchecked: <SVG icon="moon" />,
-                        }}
-                    />
+                    <Toggle />
                     <SVG icon="menu" />
                 </div>
             </nav>

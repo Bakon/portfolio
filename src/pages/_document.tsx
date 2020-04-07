@@ -8,7 +8,7 @@ import Document, {
     DocumentInitialProps,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import ThemeScript from '../util/theme-script';
+import ThemeScript from '../util/theme-toggle-script';
 
 type Props = {};
 
@@ -48,7 +48,7 @@ export default class extends Document {
                     content="Portfolio Julio Schilders, Javascript developer"
                 />
                 <meta name="author" content="Julio Schilders" />
-                <Head />
+                <Head>{this.props.styleTags}</Head>
                 <body>
                     <ThemeScript />
                     <Main />
