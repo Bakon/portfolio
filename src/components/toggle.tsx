@@ -1,9 +1,9 @@
-import React, { ReactElement, SetStateAction, useEffect, useState } from 'react';
+import React, { ReactElement, SetStateAction, useState } from 'react';
 import styled from 'styled-components';
 import { colors } from '../util/css-util';
 
 type Props = {
-    onClick: () => any;
+    onClick: () => SetStateAction<void>;
     icons: { [key: string]: ReactElement };
     checked: boolean | undefined;
     className?: string;
@@ -12,17 +12,15 @@ type Props = {
 const Toggle = ({ className, onClick, checked, icons }: Props): ReactElement => {
     const [hasClicked, toggleFirstClick] = useState(false);
 
-    const modifiedClickHandler = () => {
-        toggleFirstClick(true);
-        onClick();
-    };
-
     return (
         <StyledToggle
             className={className}
-            onClick={() => modifiedClickHandler()}
-            checked={checked}
             hasClicked={hasClicked}
+            checked={checked}
+            onClick={(): void => {
+                toggleFirstClick(true);
+                onClick();
+            }}
         >
             <div className="thumb" />
             <div className="track">
@@ -66,8 +64,8 @@ const StyledToggle = styled.div<StyleProps>`
     .thumb {
         position: absolute;
         top: 4px;
-        ${({ checked, hasClicked }): string =>
-            !hasClicked && checked ? 'left: -31px;' : 'left: -2px;'}
+        left: ${({ checked, hasClicked }): number =>
+            !hasClicked && checked ? -34 : -2}px;
         width: 24px;
         height: 24px;
         border-radius: 50%;
@@ -76,7 +74,7 @@ const StyledToggle = styled.div<StyleProps>`
         box-sizing: border-box;
         transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
         transform: translateX(
-            ${({ checked, hasClicked }): number => (hasClicked && checked ? 4 : 36)}px
+            ${({ checked, hasClicked }): number => (hasClicked && checked ? 6 : 38)}px
         );
     }
 
