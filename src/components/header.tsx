@@ -31,7 +31,7 @@ const Header = ({ className }: { className?: string }): ReactElement => {
                         </h3>
                         <h3 className="mobile">
                             J<span className="super-mobile">ava</span>S
-                            <span className="super-mobile">cript</span> Dev
+                            <span className="super-mobile">cript</span>&nbsp;Dev
                         </h3>
                     </div>
                 </div>

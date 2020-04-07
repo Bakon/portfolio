@@ -24,26 +24,26 @@ const Toggle = ({
     onFocus,
     onChange,
     icons,
-    className,
     checked,
     disabled = false,
 }: Props): ReactElement => {
     const inputRef = useRef<HTMLInputElement>(null);
     const toggleRef = useRef<HTMLDivElement>(null);
     const [isChecked, setChecked] = useState(checked);
+    const [isPreviouslyChecked, setPreviouslyChecked] = useState(false);
     const [isFocussed, setFocus] = useState(false);
 
     useEffect(() => {
         const toggle = toggleRef.current;
-
-        if (toggle && window.__theme === 'dark') {
-            toggle.classList.add('fade');
+        if (toggle) {
             setChecked(window.__theme === 'dark');
-            setTimeout(() => toggle.classList.remove('fade'), 250);
+            setTimeout(() => toggle.classList.remove('invisible'), 300);
         }
     }, []);
 
     const handleClick = (event: MouseEvent): void => {
+        setPreviouslyChecked(true);
+
         const checkbox = inputRef.current;
 
         if (checkbox === null) return;
@@ -72,13 +72,14 @@ const Toggle = ({
 
     return (
         <StyledToggle
-            className={className}
+            className={!isPreviouslyChecked ? 'invisible' : ''}
             onClick={handleClick}
             disabled={disabled}
             isFocussed={isFocussed}
             isChecked={isChecked}
+            ref={toggleRef}
         >
-            <div className="thumb" ref={toggleRef} />
+            <div className="thumb" />
             <div className="track">
                 <div className="track-button checked">{icons['checked']}</div>
                 <div className="track-button unchecked">{icons['unchecked']}</div>
@@ -120,6 +121,14 @@ const StyledToggle = styled.div<StyleProps>`
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
+    &.invisible {
+        visibility: hidden;
+
+        * {
+            transition: none;
+        }
+    }
+
     &:active .thumb {
         box-shadow: 0px 0px 5px 5px ${colors.blue};
     }
@@ -145,7 +154,6 @@ const StyledToggle = styled.div<StyleProps>`
             isFocussed && `box-shadow: 0px 0px 2px 3px ${colors.blue};`}
 
         &.fade {
-            transform: translateX(32px);
             transition: none;
         }
     }
