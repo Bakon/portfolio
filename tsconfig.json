@@ -35,6 +35,7 @@
         "**/*.ts",
         "**/*.tsx",
         "src/components/toggle.jsx",
-        "src/components/theme-toggle.jsx"
+        "src/components/theme-toggle.jsx",
+        "src/util/toggle-theme.sx"
     ]
 }
