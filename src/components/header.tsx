@@ -27,7 +27,7 @@ const Header = ({ className }: { className?: string }): ReactElement => {
                     <SVG icon="logo" />
                     <div className="name">
                         <h3 className="mobile">
-                            J<span className="super-mobile">ulio</span> &nbsp;Schilders
+                            J<span className="super-mobile">ulio&nbsp;</span>Schilders
                         </h3>
                         <h3 className="mobile">
                             J<span className="super-mobile">ava</span>S
@@ -112,8 +112,8 @@ const StyledHeader = styled.header`
 
     svg.menu {
         display: none;
-        width: ${multiply(spacing.regularMedium, 3)};
-        height: ${multiply(spacing.regularMedium, 3)};
+        width: ${spacing.mediumExtraLarge};
+        height: ${spacing.mediumExtraLarge};
         fill: ${theme.text};
         margin-left: ${spacing.mediumLarge};
 
@@ -122,8 +122,6 @@ const StyledHeader = styled.header`
         }
 
         ${media.mobileL} {
-            width: ${spacing.mediumLarge};
-            height: ${spacing.mediumLarge};
             margin-left: ${spacing.regularMedium};
         }
     }

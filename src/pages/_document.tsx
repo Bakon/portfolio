@@ -8,8 +8,9 @@ import Document, {
     DocumentInitialProps,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import { RenderPageResult } from 'next/dist/next-server/lib/utils';
 import ThemeScript from '../util/theme-script';
+
+type Props = {};
 
 export default class extends Document {
     static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
@@ -17,7 +18,7 @@ export default class extends Document {
         const originalRenderPage = ctx.renderPage;
 
         try {
-            ctx.renderPage = (): RenderPageResult | Promise<RenderPageResult> =>
+            ctx.renderPage = (): ReturnType<typeof ctx.renderPage> =>
                 originalRenderPage({
                     enhanceApp: (App) => (props): ReactElement =>
                         stylesheet.collectStyles(<App {...props} />),

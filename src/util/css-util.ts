@@ -10,11 +10,12 @@ export const theme: { [key: string]: string } = {
 };
 
 export const colors: { [key: string]: string } = {
-    black: '#001F3F',
+    black: '#181717',
     dark: '#282c34',
     white: '#FFF',
     blue: '#4b9acd',
     green: '#5aac44',
+    snow: '#fafafa',
 };
 
 const baseSpacing = '0.3125rem';
@@ -24,6 +25,7 @@ export const spacing: { [key: string]: string } = {
     regularMedium: multiply(baseSpacing, 3), // 0.9375rem - 15px
     medium: multiply(baseSpacing, 4), // 1.25rem - 20px
     mediumLarge: multiply(baseSpacing, 6), // 1.875rem - 30px
+    mediumExtraLarge: multiply(baseSpacing, 7),
     large: multiply(baseSpacing, 8), // 2.5rem - 40px
     extraLarge: multiply(baseSpacing, 10), // 3.1rem - 50px
     header: multiply(baseSpacing, 30), // 9.3rem

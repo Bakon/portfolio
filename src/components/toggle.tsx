@@ -4,35 +4,10 @@ import React, {
     useRef,
     ReactElement,
     FocusEvent,
-    TouchEvent,
     MouseEvent,
-    TouchList,
 } from 'react';
 import styled from 'styled-components';
 import { colors } from '../util/css-util';
-
-type EventProps = {
-    changedTouches?: TouchList;
-    pageX?: number;
-    pageY?: number;
-};
-
-const pointerCoord = (event: EventProps): { x: number; y: number | undefined } => {
-    // get coordinates for either a mouse click
-    // or a touch depending on the given event
-    if (event) {
-        const changedTouches = event.changedTouches;
-
-        if (changedTouches && changedTouches.length > 0) {
-            const touch = changedTouches[0];
-            return { x: touch.clientX, y: touch.clientY };
-        }
-        const { pageX, pageY } = event;
-
-        if (pageX !== undefined) return { x: pageX, y: pageY };
-    }
-    return { x: 0, y: 0 };
-};
 
 type Props = {
     onBlur?: (event: FocusEvent) => void;
@@ -57,11 +32,6 @@ const Toggle = ({
     const toggleRef = useRef<HTMLDivElement>(null);
     const [isChecked, setChecked] = useState(checked);
     const [isFocussed, setFocus] = useState(false);
-    const [isPreviouslyChecked, setPreviouslyChecked] = useState<boolean | null>(null);
-    const [isFocussedAtTouchStart, setFocussedAtTouchStart] = useState(false);
-    const [isTouchStarted, setTouchStarted] = useState(false);
-    const [startX, setStartX] = useState<null | number>(null);
-    const [isTouched, setTouch] = useState(false);
 
     useEffect(() => {
         const toggle = toggleRef.current;
@@ -69,7 +39,6 @@ const Toggle = ({
         if (toggle && window.__theme === 'dark') {
             toggle.classList.add('fade');
             setChecked(window.__theme === 'dark');
-
             setTimeout(() => toggle.classList.remove('fade'), 250);
         }
     }, []);
@@ -78,8 +47,6 @@ const Toggle = ({
         const checkbox = inputRef.current;
 
         if (checkbox === null) return;
-
-        setPreviouslyChecked(checkbox.checked);
 
         if (event.target !== checkbox) {
             event.preventDefault();
@@ -91,70 +58,15 @@ const Toggle = ({
         setChecked(checkbox.checked);
     };
 
-    const handleTouchStart = (event: EventProps): void => {
-        setStartX(pointerCoord(event).x);
-        setTouchStarted(true);
-        setFocussedAtTouchStart(isFocussed);
-        setFocus(true);
-    };
-
-    const handleTouchMove = (event: EventProps): void => {
-        if (!isTouchStarted) return;
-
-        setTouch(true);
-
-        if (startX != null) {
-            const currentX = pointerCoord(event).x;
-
-            if (isChecked && currentX + 15 < startX) {
-                setChecked(false);
-                setStartX(currentX);
-            } else if (!isChecked && currentX - 15 > startX) {
-                setChecked(true);
-                setStartX(currentX);
-            }
-        }
-    };
-
-    const handleTouchEnd = (event: TouchEvent): void => {
-        const checkbox = inputRef.current;
-
-        if (!isTouched || checkbox === null) return;
-
-        event.preventDefault();
-
-        if (startX != null) {
-            if (isPreviouslyChecked !== isChecked) checkbox.click();
-
-            setTouchStarted(false);
-            setStartX(null);
-            setTouch(false);
-        }
-
-        if (!isFocussedAtTouchStart) setFocus(false);
-    };
-
-    const handleTouchCancel = (): void => {
-        if (startX != null) {
-            setTouchStarted(false);
-            setStartX(null);
-            setTouch(false);
-        }
-
-        if (!isFocussedAtTouchStart) setFocus(false);
-    };
-
     const handleFocus = (event: FocusEvent): void => {
         if (onFocus) onFocus(event);
 
-        setFocussedAtTouchStart(true);
         setFocus(true);
     };
 
     const handleBlur = (event: FocusEvent): void => {
         if (onBlur) onBlur(event);
 
-        setFocussedAtTouchStart(false);
         setFocus(false);
     };
 
@@ -162,32 +74,29 @@ const Toggle = ({
         <StyledToggle
             className={className}
             onClick={handleClick}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            onTouchCancel={handleTouchCancel}
             disabled={disabled}
             isFocussed={isFocussed}
             isChecked={isChecked}
         >
+            <div className="thumb" ref={toggleRef} />
             <div className="track">
                 <div className="track-button checked">{icons['checked']}</div>
                 <div className="track-button unchecked">{icons['unchecked']}</div>
             </div>
-            <div className="thumb" ref={toggleRef} />
             <input
                 onChange={onChange}
                 checked={isChecked}
                 ref={inputRef}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
-                className="screenreader-only"
+                className="checkbox-toggle"
                 type="checkbox"
                 aria-label="Switch between Dark and Light mode"
             />
         </StyledToggle>
     );
 };
+
 export default Toggle;
 
 type StyleProps = {
@@ -215,36 +124,9 @@ const StyledToggle = styled.div<StyleProps>`
         box-shadow: 0px 0px 5px 5px ${colors.blue};
     }
 
-    .track {
-        width: 64px;
-        height: 32px;
-        padding: 0;
-        border-radius: 30px;
-        background-color: hsl(222, 14%, 7%);
-        transition: all 0.2s ease;
-    }
-
-    .track-button {
+    .checkbox-toggle {
+        clip: rect(0 0 0 0);
         position: absolute;
-        width: 18px;
-        height: 18px;
-        top: 0px;
-        bottom: 0px;
-        margin-top: auto;
-        margin-bottom: auto;
-        line-height: 0;
-
-        &.checked {
-            left: 10px;
-            transition: opacity 0s ease;
-            opacity: ${({ isChecked }): number => (isChecked ? 1 : 0)};
-        }
-
-        &.unchecked {
-            right: 10px;
-            transition: opacity 0.25s ease;
-            opacity: ${({ isChecked }): number => (isChecked ? 0 : 1)};
-        }
     }
 
     .thumb {
@@ -254,7 +136,8 @@ const StyledToggle = styled.div<StyleProps>`
         width: 28px;
         height: 28px;
         border-radius: 50%;
-        background-color: #fafafa;
+        z-index: 1000;
+        background-color: ${colors.snow};
         box-sizing: border-box;
         transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
         transform: translateX(${({ isChecked }): number => (isChecked ? 32 : 0)}px);
@@ -267,14 +150,35 @@ const StyledToggle = styled.div<StyleProps>`
         }
     }
 
-    .screenreader-only {
-        border: 0;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
+    .track {
+        width: 64px;
+        height: 32px;
         padding: 0;
-        position: absolute;
-        width: 1px;
+        border-radius: 30px;
+        background-color: hsl(222, 14%, 7%);
+        transition: all 0.2s ease;
+
+        &-button {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            top: 0px;
+            bottom: 0px;
+            margin-top: auto;
+            margin-bottom: auto;
+            line-height: 0;
+
+            &.checked {
+                left: 10px;
+                transition: opacity 0s ease;
+                opacity: ${({ isChecked }): number => (isChecked ? 1 : 0)};
+            }
+
+            &.unchecked {
+                right: 10px;
+                transition: opacity 0.25s ease;
+                opacity: ${({ isChecked }): number => (isChecked ? 0 : 1)};
+            }
+        }
     }
 `;
