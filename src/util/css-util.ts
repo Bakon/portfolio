@@ -13,7 +13,7 @@ export const colors: { [key: string]: string } = {
     black: '#181717',
     dark: '#282c34',
     white: '#FFF',
-    blue: '#4b9acd',
+    blue: '#1085d1',
     green: '#5aac44',
     snow: '#fafafa',
 };

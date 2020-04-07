@@ -66,7 +66,7 @@ const StyledToggle = styled.div`
         height: 32px;
         padding: 0;
         border-radius: 30px;
-        background-color: hsl(222, 14%, 7%);
+        background-color: ${colors.blue};
 
         &-button {
             position: absolute;

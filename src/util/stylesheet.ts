@@ -29,7 +29,7 @@ const Stylesheet = createGlobalStyle`
             --link: ${lightTheme.color};
 
             .thumb {
-                left: -36px
+                left: -4px
             }
         }
 
@@ -41,7 +41,7 @@ const Stylesheet = createGlobalStyle`
             --link: ${darkTheme.color};
 
             .thumb {
-                left: -4px;
+                left: -36px;
             }
         }
 
