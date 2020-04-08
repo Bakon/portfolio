@@ -34,7 +34,6 @@ const StyledMain = styled.main`
     width: 100%;
     max-width: ${spacing.container};
     padding: 0 ${spacing.large};
-
     color: ${theme.text};
 
     ${media.mobileL} {

@@ -11,7 +11,7 @@ export const theme: { [key: string]: string } = {
 
 export const colors: { [key: string]: string } = {
     snow: '#fafafa',
-    white: '#FFF',
+    white: 'rgb(255,255,240)',
     black: '#181717',
     lightBlue: '#00bfff',
     dark: '#282c34',
