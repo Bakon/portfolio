@@ -1,8 +1,9 @@
 import React, { ReactElement, useState, useEffect, SetStateAction } from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import SVG from './svg';
 import Toggle from './toggle';
-import { spacing, theme, colors, media, multiply } from '../util/css-util';
+import { spacing, theme, media, multiply } from '../util/css-util';
 
 declare global {
     interface Window {
@@ -25,19 +26,9 @@ const Header = ({ className }: { className?: string }): ReactElement => {
             <nav className="nav">
                 <div className="branding">
                     <SVG icon="logo" />
-                    <div className="name">
-                        <h3 className="mobile">
-                            J<span className="super-mobile">ulio&nbsp;</span>Schilders
-                        </h3>
-                        <h3 className="mobile">
-                            J<span className="super-mobile">ava</span>S
-                            <span className="super-mobile">cript</span>&nbsp;Dev
-                        </h3>
-                    </div>
-                </div>
-                <div className="name">
-                    <h3>Julio Schilders</h3>
-                    <h3>JavaScript Developer</h3>
+                    <Link href="/">
+                        <a className="name">J Schilders</a>
+                    </Link>
                 </div>
                 <div className="links">
                     <span>About me</span>
@@ -127,32 +118,6 @@ const StyledHeader = styled.header`
         }
     }
 
-    .name {
-        h3 {
-            margin: 0;
-        }
-
-        .mobile {
-            display: none;
-        }
-
-        ${media.mobileM} {
-            h3:not(.mobile) {
-                display: none;
-            }
-
-            .mobile {
-                display: flex;
-            }
-        }
-
-        ${media.mobileS} {
-            .super-mobile {
-                display: none;
-            }
-        }
-    }
-
     .links {
         display: flex;
         flex-flow: row nowrap;
@@ -173,7 +138,7 @@ const StyledHeader = styled.header`
             border-bottom: 2px solid transparent;
 
             &:hover {
-                background: ${colors.blue};
+                text-decoration: underline;
             }
         }
     }
@@ -181,6 +146,16 @@ const StyledHeader = styled.header`
     .branding {
         display: flex;
         height: 100%;
+
+        .name {
+            margin: auto;
+            font-size: 2rem;
+            font-weight: 700;
+
+            ${media.mobileL} {
+                font-size: 1.5rem;
+            }
+        }
     }
 
     .actions {

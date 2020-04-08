@@ -1,18 +1,28 @@
 import React from 'react';
-import Head from 'next/head';
 import styled from 'styled-components';
 import { spacing, theme, media } from '../util/css-util';
 import { NextPage } from 'next';
 
 const Main: NextPage = () => (
     <StyledMain>
-        <Head>
-            <title>hello world!</title>
-        </Head>
-        <h1>
-            Hiya, I&apos;m Julio! <span> 👋</span>
-        </h1>
-        <h2>Please come back soon :)</h2>
+        <section>
+            <h1>
+                Hiya, my name is Julio Schilders! <span> 👋</span>
+            </h1>
+            <p>
+                I&apos;m a software engineer mainly building (web) applications with
+                TypeScript, JavaScript and React. I maintain the front-end and dashboard
+                of{' '}
+                <a href="https://floorplanner.com" rel="noreferrer noopener">
+                    Floorplanner
+                </a>
+                , together with my good friend &amp; teacher{' '}
+                <a href="https://sidneyliebrand.io/" rel="noreferrer noopener">
+                    Sidney
+                </a>
+                .
+            </p>
+        </section>
     </StyledMain>
 );
 

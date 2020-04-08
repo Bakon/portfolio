@@ -10,12 +10,14 @@ export const theme: { [key: string]: string } = {
 };
 
 export const colors: { [key: string]: string } = {
-    black: '#181717',
-    dark: '#282c34',
-    white: '#FFF',
-    blue: '#1085d1',
-    green: '#5aac44',
     snow: '#fafafa',
+    white: '#FFF',
+    black: '#181717',
+    lightBlue: '#00bfff',
+    dark: '#282c34',
+    blue: '#1085d1',
+    spaceBlue: '#033352',
+    green: '#5aac44',
 };
 
 const baseSpacing = '0.3125rem';

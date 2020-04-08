@@ -4,11 +4,13 @@ import { colors } from './css-util';
 const lightTheme: { [key: string]: string } = {
     background: colors.white,
     color: colors.black,
+    link: colors.blue,
 };
 
 const darkTheme: { [key: string]: string } = {
     background: colors.dark,
     color: colors.white,
+    link: colors.lightBlue,
 };
 
 const Stylesheet = createGlobalStyle`
@@ -31,6 +33,16 @@ const Stylesheet = createGlobalStyle`
             .thumb {
                 left: -4px
             }
+
+            a {
+                color: ${lightTheme.link};
+                text-decoration: none;
+            }
+
+            span, p,
+            h1, h2, h3, h4, h5, h6 {
+                color: ${lightTheme.color};
+            }
         }
 
         &.dark {
@@ -42,6 +54,16 @@ const Stylesheet = createGlobalStyle`
 
             .thumb {
                 left: -36px;
+            }
+
+            a {
+                color: ${darkTheme.link};
+                text-decoration: none;
+            }
+
+            span, p,
+            h1, h2, h3, h4, h5, h6 {
+                color: ${darkTheme.color};
             }
         }
 
