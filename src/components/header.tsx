@@ -33,6 +33,7 @@ const Header = ({ className }: { className?: string }): ReactElement => {
                 <div className="links">
                     <span>About me</span>
                     <span>Projects</span>
+                    <span>Posts</span>
                     <span>Contact</span>
                 </div>
                 <div className="actions">
@@ -109,7 +110,7 @@ const StyledHeader = styled.header`
         fill: ${theme.text};
         margin-left: ${spacing.mediumLarge};
 
-        ${media.tablet} {
+        ${media.tabletL} {
             display: flex;
         }
 
@@ -126,7 +127,7 @@ const StyledHeader = styled.header`
         flex: 1;
         width: 100%;
 
-        ${media.tablet} {
+        ${media.tabletL} {
             display: none;
         }
 

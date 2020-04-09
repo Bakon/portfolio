@@ -22,6 +22,7 @@ app.prepare()
             app.render(req, res, actualPage, queryParams);
         });
     })
+
     .catch(({ stack }) => {
         console.error(stack);
         process.exit(1);

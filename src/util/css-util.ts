@@ -10,13 +10,18 @@ export const theme: { [key: string]: string } = {
 };
 
 export const colors: { [key: string]: string } = {
-    snow: '#fafafa',
-    white: 'rgb(240,240,240)',
+    // black
     black: '#181717',
-    lightBlue: '#00bfff',
     dark: '#282c34',
+    text: '#3f4954',
+    // white
+    white: '#f5f5f5',
+    snow: '#fafafa',
+    // blues
     blue: '#1085d1',
+    lightBlue: '#00bfff',
     spaceBlue: '#033352',
+    // greens
     green: '#5aac44',
 };
 
@@ -27,10 +32,10 @@ export const spacing: { [key: string]: string } = {
     regularMedium: multiply(baseSpacing, 3), // 0.9375rem - 15px
     medium: multiply(baseSpacing, 4), // 1.25rem - 20px
     mediumLarge: multiply(baseSpacing, 6), // 1.875rem - 30px
-    mediumExtraLarge: multiply(baseSpacing, 7),
+    mediumExtraLarge: multiply(baseSpacing, 7), // 2.2rem - 35px
     large: multiply(baseSpacing, 8), // 2.5rem - 40px
     extraLarge: multiply(baseSpacing, 10), // 3.1rem - 50px
-    header: multiply(baseSpacing, 30), // 9.3rem
+    header: multiply(baseSpacing, 20), // 6.2rem - 100px
     container: '880px', // 55rem
 };
 
@@ -39,6 +44,7 @@ const sizes: { [key: string]: string } = {
     mobileM: '440px',
     mobileL: '540px',
     tablet: '800px',
+    tabletL: '875px',
 };
 
 export const media: { [key: string]: string } = {
@@ -46,4 +52,5 @@ export const media: { [key: string]: string } = {
     mobileM: `@media (max-width: ${sizes.mobileM})`,
     mobileL: `@media (max-width: ${sizes.mobileL})`,
     tablet: `@media (max-width: ${sizes.tablet})`,
+    tabletL: `@media (max-width: ${sizes.tabletL})`,
 };

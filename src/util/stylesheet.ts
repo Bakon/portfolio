@@ -3,7 +3,7 @@ import { colors } from './css-util';
 
 const lightTheme: { [key: string]: string } = {
     background: colors.white,
-    color: colors.black,
+    color: colors.text,
     link: colors.blue,
 };
 
