@@ -11,15 +11,9 @@ app.prepare()
 
         server.get('*', (req, res) => handle(req, res));
 
-        server.listen(5000, (err) => {
-            console.log('Now running on port 5000!');
+        server.listen(8080, (err) => {
+            console.log('Now running on port 8080!');
             if (err) throw err;
-        });
-
-        server.get('/p/:id', (req, res) => {
-            const actualPage = '/post';
-            const queryParams = { id: req.params.id };
-            app.render(req, res, actualPage, queryParams);
         });
     })
 

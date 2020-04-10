@@ -2,14 +2,12 @@
     "name": "portfolio",
     "version": "1.0.0",
     "description": "Portfolio Julio Schilders",
-    "main": "index.mjs",
+    "main": "index.ts",
     "scripts": {
         "dev": "node index.mjs",
         "start": "next start",
         "build": "next build",
-        "export": "next export",
-        "production": "next build && NODE_ENV=production pm2 restart index.mjs",
-        "redeploy": "git pull && next build && NODE_ENV=production pm2 restart index.mjs"
+        "export": "next export"
     },
     "keywords": [],
     "author": "Julio Schilders",

@@ -29,13 +29,6 @@
         "noImplicitAny": false,
         "isolatedModules": true
     },
-    "exclude": ["node_modules", "out"],
-    "include": [
-        "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx",
-        "src/components/toggle.jsx",
-        "src/components/theme-toggle.jsx",
-        "src/util/toggle-theme.sx"
-    ]
+    "exclude": ["node_modules"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
