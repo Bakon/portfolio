@@ -1,4 +1,5 @@
 import React, { Component, ReactElement, Fragment } from 'react';
+import styled from 'styled-components';
 import { NextPageContext } from 'next';
 import Head from 'next/head';
 
@@ -27,8 +28,14 @@ export default class Error extends Component<Props> {
                 <Head>
                     <title>{title}</title>
                 </Head>
-                {errorCode}
+                <StyledError>
+                    <h1>{errorCode}</h1>
+                </StyledError>
             </Fragment>
         );
     }
 }
+
+const StyledError = styled.div`
+    margin: auto;
+`;
