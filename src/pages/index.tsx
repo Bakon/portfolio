@@ -10,8 +10,8 @@ const Main: NextPage = () => (
             <h2 className="subheading">Welcome to my little corner on the internet.</h2>
             <p>
                 This will be the place where I will post a blog post and new projects
-                every now and then. I t&apos;s looking a bit empty right now, but feel
-                free to come back later!
+                every now and then. It&apos;s looking a bit empty right now, but feel free
+                to come back later!
             </p>
         </section>
         <section>
