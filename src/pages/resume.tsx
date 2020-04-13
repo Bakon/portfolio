@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { NextPage } from 'next';
+import Head from 'next/document';
 import SVG from '../components/svg';
 import { spacing, colors } from '../util/css-util';
-import { Head } from 'next/document';
 
 const icons = [
     {
