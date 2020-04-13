@@ -1,10 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NextPage } from 'next';
+import Head from 'next/head';
 import { spacing } from '../util/css-util';
 
 const Main: NextPage = () => (
     <StyledMain>
+        <Head>
+            <title>Julio Schilders | About me</title>
+            <link rel="canonical" href="https://jschilders.dev" />
+        </Head>
         <section>
             <h1>Hiya, I&apos;m Julio</h1>
             <h2 className="subheading">Welcome to my little dot on the big internet!</h2>

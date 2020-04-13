@@ -26,6 +26,7 @@ const icons = [
 const Resume: NextPage = () => (
     <StyledResume>
         <Head>
+            <title>Julio Schilders | Resume</title>
             <link rel="canonical" href="https://jschilders.dev/resume" />
         </Head>
         <section>
@@ -104,7 +105,7 @@ const Resume: NextPage = () => (
             </div>
             <div className="company">
                 <div className="company--logo">
-                    <img src="/images/curio-logo.png" alt="logo Curio" />
+                    <img src="/images/curio-logo.jpeg" alt="logo Curio" />
                     <h4>Curio - Software development</h4>
                 </div>
                 <span>September 2016 - September 2017</span>
