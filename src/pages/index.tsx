@@ -21,15 +21,10 @@ const Main: NextPage = () => (
                 .
             </p>
             <p>
-                Writing code has become a passion, there&apos;s always something new to
-                learn, another problem to solve. I like to compare it with playing a MMO.
-                There are many languages and frameworks to learn (skills to level up), and
-                there&apos;s a never ending series of quests to complete (problems to
-                solve).
-            </p>
-            <p>
-                In the near future I will make a blog post and upload some (new) projects,
-                so make sure to come back soon :D
+                I enjoy writing code, there&apos;s always something new to learn, another
+                problem to solve. I like to compare it with playing a MMO. There are many
+                languages and frameworks to learn (skills to level up) and there&apos;s a
+                never ending series of quests to complete (problems to solve).
             </p>
         </section>
     </StyledMain>

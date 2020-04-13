@@ -3,20 +3,42 @@ import styled from 'styled-components';
 import { NextPage } from 'next';
 import SVG from '../components/svg';
 import { spacing, colors } from '../util/css-util';
+import { Head } from 'next/document';
 
 const icons = [
-    { url: 'https://linkedin.com/in/julioschilders/', name: 'linkedin' },
-    { url: 'mailto:julioschilders@gmail.com?subject=Mail from portfolio', name: 'gmail' },
-    { url: 'https://stackoverflow.com/users/story/11355018', name: 'stackoverflow' },
+    {
+        url: 'https://linkedin.com/in/julioschilders/',
+        logo: 'linkedin',
+        label: 'View LinkedIn profile',
+    },
+    {
+        url: 'mailto:julioschilders@gmail.com?subject=Mail from portfolio',
+        logo: 'gmail',
+        label: 'Send email',
+    },
+    {
+        url: 'https://stackoverflow.com/users/story/11355018',
+        logo: 'stackoverflow',
+        label: 'View Stackoverflow profile',
+    },
 ];
 
 const Resume: NextPage = () => (
     <StyledResume>
+        <Head>
+            <link rel="canonical" href="https://jschilders.dev/resume" />
+        </Head>
         <section>
             {icons.map(
-                ({ url, name }: { [key: string]: string }): ReactElement => (
-                    <a href={url} key={name} rel="noreferrer noopener" target="_blank">
-                        <SVG icon={name} />
+                ({ url, logo, label }: { [key: string]: string }): ReactElement => (
+                    <a
+                        key={logo}
+                        href={url}
+                        rel="noreferrer noopener"
+                        target="_blank"
+                        aria-label={label}
+                    >
+                        <SVG icon={logo} />
                     </a>
                 )
             )}
@@ -75,14 +97,14 @@ const Resume: NextPage = () => (
             <h2>Education</h2>
             <div className="company">
                 <div className="company--logo">
-                    <img src="/images/rea-logo.png" />
+                    <img src="/images/rea-logo.png" alt="logo REA" />
                     <h4>REA - Web development</h4>
                 </div>
                 <span>September 2018 - April 2020</span>
             </div>
             <div className="company">
                 <div className="company--logo">
-                    <img src="/images/curio-logo.png" />
+                    <img src="/images/curio-logo.png" alt="logo Curio" />
                     <h4>Curio - Software development</h4>
                 </div>
                 <span>September 2016 - September 2017</span>

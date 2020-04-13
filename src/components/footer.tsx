@@ -1,13 +1,12 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import SVG from './svg';
-import Link from 'next/link';
-import { spacing, colors, media, theme } from '../util/css-util';
+import { spacing, colors, theme } from '../util/css-util';
 
 const Footer = ({ className }: { className?: string }): ReactElement => (
     <StyledFooter className={className}>
         <span>&copy; Julio Schilders</span>
-        <a href="https://github.com/Julicolo">
+        <a href="https://github.com/Julicolo" aria-label="View GitHub profile">
             <SVG icon="github" />
         </a>
     </StyledFooter>

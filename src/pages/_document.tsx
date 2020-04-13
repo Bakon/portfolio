@@ -35,7 +35,7 @@ export default class extends Document {
     render(): ReactElement {
         return (
             <Html lang="en">
-                <title>Portfolio Julio Schilders</title>
+                <title>Julio Schilders | Software Engineer</title>
                 <link rel="canonical" href="https://jschilders.dev" />
                 <link
                     rel="shortcut icon"
@@ -44,7 +44,7 @@ export default class extends Document {
                 />
                 <meta
                     name="description"
-                    content="My name is Julio Schilders, and I'm a software engineer mainly building (web) applications with TypeScript, JavaScript and React."
+                    content="I'm Julio Schilders, a software engineer, mainly building (web) applications with TypeScript, JavaScript and React."
                 />
                 <meta name="author" content="Julio Schilders" />
                 <Head />

@@ -4,7 +4,7 @@ import { AppProps } from 'next/app';
 import Stylesheet from '../util/stylesheet';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import { spacing, media, theme } from '../util/css-util';
+import { spacing, theme } from '../util/css-util';
 
 const App = ({ Component, pageProps }: AppProps): ReactElement => (
     <StyledContainer>
