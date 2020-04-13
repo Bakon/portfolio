@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { NextPage } from 'next';
-import Head from 'next/document';
+import Head from 'next/head';
 import SVG from '../components/svg';
 import { spacing, colors } from '../util/css-util';
 
