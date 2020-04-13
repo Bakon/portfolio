@@ -35,8 +35,6 @@ export default class extends Document {
     render(): ReactElement {
         return (
             <Html lang="en">
-                <title>Julio Schilders | Software Engineer</title>
-                <link rel="canonical" href="https://jschilders.dev" />
                 <link
                     rel="shortcut icon"
                     type="image/x-icon"
