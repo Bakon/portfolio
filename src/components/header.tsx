@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import SVG from './svg';
 import Toggle from './toggle';
-import { spacing, theme, media, multiply } from '../util/css-util';
+import { spacing, theme, media } from '../util/css-util';
 
 declare global {
     interface Window {
@@ -31,10 +31,12 @@ const Header = ({ className }: { className?: string }): ReactElement => {
                     </Link>
                 </div>
                 <div className="links">
-                    <span>About me</span>
-                    <span>Projects</span>
-                    <span>Posts</span>
-                    <span>Contact</span>
+                    <Link href="/">
+                        <a>About me</a>
+                    </Link>
+                    <Link href="/resume">
+                        <a>Resume</a>
+                    </Link>
                 </div>
                 <div className="actions">
                     <Toggle
@@ -48,7 +50,6 @@ const Header = ({ className }: { className?: string }): ReactElement => {
                             unchecked: <SVG icon="moon" />,
                         }}
                     />
-                    <SVG icon="menu" />
                 </div>
             </nav>
         </StyledHeader>
@@ -66,15 +67,11 @@ const StyledHeader = styled.header`
     width: 100%;
     max-width: ${spacing.container};
     height: ${spacing.header};
-    padding: ${spacing.medium} ${spacing.mediumLarge};
+    padding: ${spacing.regular} ${spacing.mediumLarge};
     padding-right: ${spacing.mediumLarge};
 
     background-color: ${theme.background};
     color: ${theme.text};
-
-    ${media.mobileL} {
-        padding: ${spacing.medium};
-    }
 
     a {
         text-decoration: none;
@@ -94,28 +91,12 @@ const StyledHeader = styled.header`
     }
 
     svg.logo {
-        width: ${multiply(spacing.regularMedium, 3)};
-        height: ${multiply(spacing.regularMedium, 3)};
+        width: ${spacing.large};
+        height: ${spacing.large};
         margin-right: ${spacing.mediumLarge};
 
-        ${media.mobileL} {
-            margin-right: ${spacing.regularMedium};
-        }
-    }
-
-    svg.menu {
-        display: none;
-        width: ${spacing.mediumExtraLarge};
-        height: ${spacing.mediumExtraLarge};
-        fill: ${theme.text};
-        margin-left: ${spacing.mediumLarge};
-
-        ${media.tabletL} {
-            display: flex;
-        }
-
-        ${media.mobileL} {
-            margin-left: ${spacing.regularMedium};
+        ${media.tabletS} {
+            margin-right: 0;
         }
     }
 
@@ -127,19 +108,23 @@ const StyledHeader = styled.header`
         flex: 1;
         width: 100%;
 
-        ${media.tabletL} {
-            display: none;
+        ${media.tabletS} {
+            justify-content: space-around;
+            justify-content: space-evenly;
         }
 
-        span {
-            padding: ${spacing.regularMedium};
-            margin: 0 ${spacing.regularMedium};
+        a {
+            margin: 0 ${spacing.medium};
             cursor: pointer;
             border-radius: 4px;
             border-bottom: 2px solid transparent;
 
             &:hover {
                 text-decoration: underline;
+            }
+
+            ${media.tabletS} {
+                margin: 0;
             }
         }
     }
@@ -153,8 +138,8 @@ const StyledHeader = styled.header`
             font-size: 2rem;
             font-weight: 700;
 
-            ${media.mobileL} {
-                font-size: 1.5rem;
+            ${media.tabletS} {
+                display: none;
             }
         }
     }

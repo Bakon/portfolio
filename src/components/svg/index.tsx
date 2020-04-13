@@ -1,5 +1,6 @@
 import React, { ReactElement, FC } from 'react';
 import Close from './icons/close.svg';
+import FpLogo from './icons/fp-logo.svg';
 import Github from './icons/github.svg';
 import Gmail from './icons/gmail.svg';
 import Linkedin from './icons/linkedin.svg';
@@ -12,6 +13,7 @@ import Sun from './icons/sun.svg';
 
 const icons: { [index: string]: FC } = {
     Close,
+    FpLogo,
     Github,
     Gmail,
     Linkedin,

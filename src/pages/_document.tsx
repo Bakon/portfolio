@@ -36,7 +36,7 @@ export default class extends Document {
         return (
             <Html lang="en">
                 <title>Portfolio Julio Schilders</title>
-                <link rel="canonical" href="https://jschilders.com" />
+                <link rel="canonical" href="https://jschilders.dev" />
                 <link
                     rel="shortcut icon"
                     type="image/x-icon"

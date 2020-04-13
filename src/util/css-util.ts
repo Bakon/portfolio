@@ -35,7 +35,7 @@ export const spacing: { [key: string]: string } = {
     mediumExtraLarge: multiply(baseSpacing, 7), // 2.2rem - 35px
     large: multiply(baseSpacing, 8), // 2.5rem - 40px
     extraLarge: multiply(baseSpacing, 10), // 3.1rem - 50px
-    header: multiply(baseSpacing, 20), // 6.2rem - 100px
+    header: multiply(baseSpacing, 16), //  90px
     container: '880px', // 55rem
 };
 
@@ -43,6 +43,7 @@ const sizes: { [key: string]: string } = {
     mobileS: '370px',
     mobileM: '440px',
     mobileL: '540px',
+    tabletS: '600px',
     tablet: '800px',
     tabletL: '875px',
 };
@@ -51,6 +52,7 @@ export const media: { [key: string]: string } = {
     mobileS: `@media (max-width: ${sizes.mobileS})`,
     mobileM: `@media (max-width: ${sizes.mobileM})`,
     mobileL: `@media (max-width: ${sizes.mobileL})`,
+    tabletS: `@media (max-width: ${sizes.tabletS})`,
     tablet: `@media (max-width: ${sizes.tablet})`,
     tabletL: `@media (max-width: ${sizes.tabletL})`,
 };
