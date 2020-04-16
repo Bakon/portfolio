@@ -66,7 +66,7 @@ const StyledHeader = styled.header`
     margin: 0 auto;
     width: 100%;
     max-width: ${spacing.container};
-    height: ${spacing.header};
+    min-height: ${spacing.header};
     padding: ${spacing.regular} ${spacing.mediumLarge};
     padding-right: ${spacing.mediumLarge};
 

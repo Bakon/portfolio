@@ -9,7 +9,7 @@ type Props = {
 };
 
 const Toggle = ({ className, onClick, icons }: Props): ReactElement => {
-    const [hasClicked, toggleFirstClick] = useState(false);
+    const [hasClicked, toggleFirstClick] = useState<boolean>(false);
 
     return (
         <StyledToggle

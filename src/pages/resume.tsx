@@ -23,6 +23,36 @@ const icons = [
     },
 ];
 
+const makeStringPlural = (number: number, string: string): string => {
+    if (number === 1) {
+        return number + ' ' + string;
+    } else if (number > 1) {
+        return number + ' ' + string + 's';
+    } else {
+        return '';
+    }
+};
+
+const getElapsedTime = (dateFrom: Date, dateTo: Date): string => {
+    const totalMonths =
+        dateTo.getMonth() -
+        dateFrom.getMonth() +
+        12 * (dateTo.getFullYear() - dateFrom.getFullYear());
+
+    const years = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+    const formattedYears = makeStringPlural(years, 'year');
+    const formattedMonths = makeStringPlural(months, 'month');
+
+    if (formattedYears && formattedMonths) {
+        return formattedYears + ' - ' + formattedMonths;
+    } else if (formattedYears) {
+        return formattedYears;
+    } else {
+        return formattedMonths;
+    }
+};
+
 const Resume: NextPage = () => (
     <StyledResume>
         <Head>
@@ -80,7 +110,6 @@ const Resume: NextPage = () => (
                 <span>Sass</span>
                 <span>Flow</span>
                 <span>Webpack</span>
-                <span>React-router</span>
                 <span>Styled-components</span>
             </div>
         </section>
@@ -91,7 +120,10 @@ const Resume: NextPage = () => (
                     <SVG icon="fpLogo" />
                     <h4>Floorplanner - Front-end developer</h4>
                 </div>
-                <span>October 2019 - Present</span>
+                <span>
+                    October 2019 - Present (
+                    {getElapsedTime(new Date(2019, 9), new Date())})
+                </span>
             </div>
         </section>
         <section className="experience">
@@ -101,14 +133,20 @@ const Resume: NextPage = () => (
                     <img src="/images/rea-logo.png" alt="logo REA" />
                     <h4>REA - Web development</h4>
                 </div>
-                <span>September 2018 - April 2020</span>
+                <span>
+                    September 2018 - April 2020 (
+                    {getElapsedTime(new Date(2018, 7), new Date(2020, 3))})
+                </span>
             </div>
             <div className="company">
                 <div className="company--logo">
                     <img src="/images/curio-logo.jpeg" alt="logo Curio" />
                     <h4>Curio - Software development</h4>
                 </div>
-                <span>September 2016 - September 2017</span>
+                <span>
+                    September 2016 - September 2017 (
+                    {getElapsedTime(new Date(2016, 7), new Date(2017, 8))})
+                </span>
             </div>
         </section>
     </StyledResume>
@@ -139,6 +177,8 @@ const StyledResume = styled.main`
 
     .company {
         margin-bottom: ${spacing.medium};
+        display: flex;
+        flex-flow: column nowrap;
 
         &--logo {
             display: flex;

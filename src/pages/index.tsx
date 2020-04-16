@@ -31,6 +31,11 @@ const Main: NextPage = () => (
                 languages and frameworks to learn (skills to level up) and there&apos;s a
                 never ending series of quests to complete (problems to solve).
             </p>
+            <p>
+                PS: This website is still under (almost daily) construction, so it&apos;s
+                looking a bit empty right now... So make sure to come back soon, there
+                might even be a blog post by then o/
+            </p>
         </section>
     </StyledMain>
 );
