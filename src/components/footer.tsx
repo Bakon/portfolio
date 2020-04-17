@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import SVG from './svg';
-import { spacing, colors, theme } from '../util/css-util';
+import { spacing, colors, theme, multiply } from '../util/css-util';
 
 const Footer = ({ className }: { className?: string }): ReactElement => (
     <StyledFooter className={className}>
@@ -24,6 +24,7 @@ const StyledFooter = styled.footer`
     margin-top: ${spacing.mediumLarge};
     max-width: ${spacing.container};
     padding: ${spacing.regular} ${spacing.mediumLarge};
+    min-height: ${multiply(spacing.medium, 3)};
 
     border-top: 1px solid ${theme.seperator};
     color: ${theme.text};
