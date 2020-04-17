@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import SVG from './svg';
 import Toggle from './toggle';
-import { spacing, theme, media } from '../util/css-util';
+import { spacing, colors, theme, media } from '../util/css-util';
 
 declare global {
     interface Window {
@@ -63,13 +63,14 @@ const StyledHeader = styled.header`
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
+    margin: 0 auto ${spacing.mediumLarge};
     width: 100%;
     max-width: ${spacing.container};
     min-height: ${spacing.header};
-    padding: ${spacing.regular} ${spacing.mediumLarge};
+    padding: ${spacing.small} ${spacing.mediumLarge} 0;
     padding-right: ${spacing.mediumLarge};
 
+    border-bottom: 1px solid ${theme.seperator};
     background-color: ${theme.background};
     color: ${theme.text};
 

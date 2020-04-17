@@ -5,12 +5,14 @@ const lightTheme: { [key: string]: string } = {
     background: colors.white,
     color: colors.text,
     link: colors.blue,
+    seperator: colors.lightGray,
 };
 
 const darkTheme: { [key: string]: string } = {
     background: colors.dark,
     color: colors.white,
     link: colors.lightBlue,
+    seperator: colors.darkGray,
 };
 
 const Stylesheet = createGlobalStyle`
@@ -21,14 +23,16 @@ const Stylesheet = createGlobalStyle`
     body {
         margin: 0;
         font-size: 18px;
-        font-family: 'Roboto', 'Arial', sans-serif;
         background-color: var(--bg);
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
         &.light {
             --bg: ${lightTheme.background};
             --header: ${lightTheme.color};
             --text: ${lightTheme.color};
             --link: ${lightTheme.color};
+            --seperator: ${lightTheme.seperator};
 
             .thumb {
                 left: -4px
@@ -51,6 +55,7 @@ const Stylesheet = createGlobalStyle`
             --header: ${darkTheme.color};
             --text: ${darkTheme.color};
             --link: ${darkTheme.color};
+            --seperator: ${darkTheme.seperator};
 
             .thumb {
                 left: -36px;

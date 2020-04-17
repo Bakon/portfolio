@@ -19,11 +19,13 @@ const StyledFooter = styled.footer`
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-between;
-    margin: 0 auto;
     width: 100%;
+    margin: 0 auto;
+    margin-top: ${spacing.mediumLarge};
     max-width: ${spacing.container};
     padding: ${spacing.regular} ${spacing.mediumLarge};
 
+    border-top: 1px solid ${theme.seperator};
     color: ${theme.text};
 
     svg {

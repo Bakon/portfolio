@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import SVG from '../components/svg';
-import { spacing, colors } from '../util/css-util';
+import { spacing, colors, media } from '../util/css-util';
 
 const icons = [
     {
@@ -40,7 +40,7 @@ const getElapsedTime = (dateFrom: Date, dateTo: Date): string => {
         12 * (dateTo.getFullYear() - dateFrom.getFullYear());
 
     const years = Math.floor(totalMonths / 12);
-    const months = totalMonths % 12;
+    const months = (totalMonths % 12) + 1;
     const formattedYears = makeStringPlural(years, 'year');
     const formattedMonths = makeStringPlural(months, 'month');
 
@@ -84,33 +84,35 @@ const Resume: NextPage = () => (
             <div className="row">
                 <span>JavaScript</span>
                 <span>TypeScript</span>
-                <span>PHP</span>
                 <span>Python</span>
+                <span>PHP</span>
+                <span>SQL</span>
                 <span>CSS</span>
                 <span>HTML</span>
-                <span>SQL</span>
+                <span>XML</span>
             </div>
         </section>
         <section>
-            <h2>Frameworks &amp; tools</h2>
+            <h2>Libraries &amp; Frameworks</h2>
             <div className="row">
-                <span>React</span>
-                <span>Next</span>
-                <span>Express</span>
-                <span>Electron</span>
-                <span>Pug</span>
+                <span>React.js</span>
+                <span>Next.js</span>
+                <span>Express.js</span>
+                <span>Electron.js</span>
+                <span>Pug.js</span>
                 <span>jQuery</span>
+                <span>Flask</span>
             </div>
         </section>
         <section>
             <h2>Miscellaneous</h2>
             <div className="row">
+                <span>Node.js</span>
                 <span>Git</span>
-                <span>Node</span>
-                <span>Sass</span>
-                <span>Flow</span>
                 <span>Webpack</span>
+                <span>Sass</span>
                 <span>Styled-components</span>
+                <span>Flow</span>
             </div>
         </section>
         <section className="experience">
@@ -118,36 +120,48 @@ const Resume: NextPage = () => (
             <div className="company">
                 <div className="company--logo">
                     <SVG icon="fpLogo" />
-                    <h4>Floorplanner - Front-end developer</h4>
+                    <h4>
+                        Floorplanner - Front-end dev
+                        <span className="hide-on-mobile">eloper</span>
+                    </h4>
                 </div>
-                <span>
-                    October 2019 - Present (
-                    {getElapsedTime(new Date(2019, 9), new Date())})
-                </span>
+                <div className="date">
+                    <span>October 2019 - Present</span>
+                    <span>({getElapsedTime(new Date(2019, 9), new Date())})</span>
+                </div>
             </div>
         </section>
         <section className="experience">
             <h2>Education</h2>
             <div className="company">
                 <div className="company--logo">
-                    <img src="/images/rea-logo.png" alt="logo REA" />
+                    <img src="/images/rea-logo.png" alt="logo REA" className="rea" />
                     <h4>REA - Web development</h4>
                 </div>
-                <span>
-                    September 2018 - April 2020 (
-                    {getElapsedTime(new Date(2018, 7), new Date(2020, 3))})
-                </span>
+                <div className="date">
+                    <span>Augustus 2018 - April 2020</span>
+                    <span>({getElapsedTime(new Date(2018, 7), new Date(2020, 3))})</span>
+                </div>
             </div>
             <div className="company">
                 <div className="company--logo">
-                    <img src="/images/curio-logo.jpeg" alt="logo Curio" />
+                    <img
+                        src="/images/curio-logo.jpeg"
+                        alt="logo Curio"
+                        className="curio"
+                    />
                     <h4>Curio - Software development</h4>
                 </div>
-                <span>
-                    September 2016 - September 2017 (
-                    {getElapsedTime(new Date(2016, 7), new Date(2017, 8))})
-                </span>
+                <div className="date">
+                    <span>Augustus 2016 - October 2017</span>
+                    <span>({getElapsedTime(new Date(2016, 7), new Date(2017, 9))})</span>
+                </div>
             </div>
+        </section>
+        <section>
+            <a href="/assets/resume.pdf" download="julio-schilders-resume.pdf">
+                <button className="download">Download as PDF</button>
+            </a>
         </section>
     </StyledResume>
 );
@@ -159,10 +173,30 @@ const StyledResume = styled.main`
         margin-left: ${spacing.large};
     }
 
+    section {
+        h2 {
+            color: ${colors.blue};
+        }
+
+        &.experience {
+            h2 {
+                margin-bottom: ${spacing.small};
+            }
+
+            .elapsed-time {
+                color: gray;
+            }
+        }
+    }
+
     .personalia {
         display: flex;
         flex-flow: column nowrap;
         margin-top: ${spacing.medium};
+
+        span {
+            margin: ${spacing.small} 0;
+        }
     }
 
     .row {
@@ -190,12 +224,42 @@ const StyledResume = styled.main`
             border-radius: 50%;
             max-width: 35px;
             margin-right: ${spacing.medium};
+            border: 2px solid;
+
+            &.rea {
+                border-color: ${colors.reaGreen};
+            }
+
+            &.curio {
+                border-color: ${colors.black};
+            }
+        }
+
+        ${media.mobileM} {
+            .hide-on-mobile {
+                display: none;
+            }
         }
     }
 
-    .experience {
-        h2 {
-            margin-bottom: ${spacing.small};
+    .date {
+        display: flex;
+        flex-flow: row wrap;
+
+        span {
+            margin: ${spacing.small} 0;
+
+            &:first-child {
+                margin-right: ${spacing.regular};
+            }
+
+            &:last-child {
+                color: ${colors.gray};
+            }
+        }
+
+        ${media.mobileL} {
+            flex-flow: column nowrap;
         }
     }
 
@@ -217,5 +281,16 @@ const StyledResume = styled.main`
         &.fpLogo {
             margin-right: ${spacing.medium};
         }
+    }
+
+    .download {
+        border: 2px solid ${colors.blue};
+        border-radius: 4px;
+        color: ${colors.blue};
+        background: ${colors.white};
+        font-size: 1rem;
+        padding: ${spacing.regular} ${spacing.regularMedium};
+        user-select: none;
+        outline: none;
     }
 `;

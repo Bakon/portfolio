@@ -7,6 +7,7 @@ export const theme: { [key: string]: string } = {
     header: 'var(--header)',
     text: 'var(--text)',
     link: 'var(--link)',
+    seperator: 'var(--seperator)',
 };
 
 export const colors: { [key: string]: string } = {
@@ -17,12 +18,17 @@ export const colors: { [key: string]: string } = {
     // white
     white: '#f5f5f5',
     snow: '#fafafa',
+    // gray
+    gray: '#888888',
+    lightGray: '#e4e4e4',
+    darkGray: '#3e3e3e',
     // blues
     blue: '#1085d1',
     lightBlue: '#00bfff',
     spaceBlue: '#033352',
     // greens
     green: '#5aac44',
+    reaGreen: '#159499',
 };
 
 const baseSpacing = '0.3125rem';
@@ -35,12 +41,12 @@ export const spacing: { [key: string]: string } = {
     mediumExtraLarge: multiply(baseSpacing, 7), // 2.2rem - 35px
     large: multiply(baseSpacing, 8), // 2.5rem - 40px
     extraLarge: multiply(baseSpacing, 10), // 3.1rem - 50px
-    header: multiply(baseSpacing, 16), //  90px
+    header: multiply(baseSpacing, 14), //  90px
     container: '880px', // 55rem
 };
 
 const sizes: { [key: string]: string } = {
-    mobileS: '370px',
+    mobileS: '380px',
     mobileM: '440px',
     mobileL: '540px',
     tabletS: '600px',
