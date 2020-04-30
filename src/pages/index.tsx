@@ -31,8 +31,8 @@ const Main: NextPage = () => (
                 complete (problems to solve).
             </p>
             <p>
-                PS: This website is still under (almost daily) construction, so it&apos;s looking a bit empty
-                right now... So make sure to come back soon, there might even be a blog post by then!
+                PS: This website is still under construction, so it&apos;s looking a bit empty right now... So
+                make sure to come back soon, there might even be a blog post by then!
             </p>
         </section>
     </StyledMain>

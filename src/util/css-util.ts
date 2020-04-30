@@ -49,7 +49,7 @@ const screenSizes: { [key: string]: number } = {
     mobileM: 440,
     mobileL: 540,
     tabletS: 600,
-    tablet: 800,
+    tabletM: 800,
     tabletL: 875,
 };
 
