@@ -1,12 +1,5 @@
 import React, { ReactElement } from 'react';
-import Document, {
-    Html,
-    Head,
-    Main,
-    NextScript,
-    DocumentContext,
-    DocumentInitialProps,
-} from 'next/document';
+import Document, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import ThemeScript from '../util/toggle-script';
 
@@ -35,11 +28,7 @@ export default class extends Document {
     render(): ReactElement {
         return (
             <Html lang="en">
-                <link
-                    rel="shortcut icon"
-                    type="image/x-icon"
-                    href="assets/icons/favicon.ico"
-                />
+                <link rel="shortcut icon" type="image/x-icon" href="assets/icons/favicon.ico" />
                 <meta
                     name="description"
                     content="I'm Julio Schilders, a software engineer, mainly building (web) applications with TypeScript, JavaScript and React."

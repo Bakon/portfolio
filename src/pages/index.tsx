@@ -14,8 +14,8 @@ const Main: NextPage = () => (
             <h1>Hiya, I&apos;m Julio</h1>
             <h2 className="subheading">Welcome to my little dot on the big internet!</h2>
             <p>
-                I&apos;m a software engineer mainly building (web) applications with
-                JavaScript, TypeScript, and React. I work at{' '}
+                I&apos;m a software engineer mainly building (web) applications with JavaScript, TypeScript,
+                and React. I work at{' '}
                 <a href="https://floorplanner.com" rel="noreferrer noopener">
                     Floorplanner
                 </a>{' '}
@@ -26,15 +26,13 @@ const Main: NextPage = () => (
                 .
             </p>
             <p>
-                I enjoy writing code, I like to compare it with playing a MMO. There are
-                many languages and frameworks to learn (skills to level up) and
-                there&apos;s a never ending series of quests to complete (problems to
-                solve).
+                I enjoy writing code, I like to compare it with playing a MMO. There are many languages and
+                frameworks to learn (skills to level up) and there&apos;s a never ending series of quests to
+                complete (problems to solve).
             </p>
             <p>
-                PS: This website is still under (almost daily) construction, so it&apos;s
-                looking a bit empty right now... So make sure to come back soon, there
-                might even be a blog post by then!
+                PS: This website is still under (almost daily) construction, so it&apos;s looking a bit empty
+                right now... So make sure to come back soon, there might even be a blog post by then!
             </p>
         </section>
     </StyledMain>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import SVG from './svg';
 import Toggle from './toggle';
-import { spacing, colors, theme, media } from '../util/css-util';
+import { spacing, theme, device } from '../util/css-util';
 
 declare global {
     interface Window {
@@ -40,11 +40,7 @@ const Header = ({ className }: { className?: string }): ReactElement => {
                 </div>
                 <div className="actions">
                     <Toggle
-                        onClick={(): void =>
-                            window.__setTheme(
-                                window.__theme === 'dark' ? 'light' : 'dark'
-                            )
-                        }
+                        onClick={(): void => window.__setTheme(window.__theme === 'dark' ? 'light' : 'dark')}
                         icons={{
                             checked: <SVG icon="sun" />,
                             unchecked: <SVG icon="moon" />,
@@ -86,7 +82,7 @@ const StyledHeader = styled.header`
         height: ${spacing.extraLarge};
         width: 100%;
 
-        ${media.mobileL} {
+        ${device.mobileL} {
             justify-content: space-between;
         }
     }
@@ -96,7 +92,7 @@ const StyledHeader = styled.header`
         height: ${spacing.large};
         margin-right: ${spacing.mediumLarge};
 
-        ${media.tabletS} {
+        ${device.tabletS} {
             margin-right: 0;
         }
     }
@@ -109,7 +105,7 @@ const StyledHeader = styled.header`
         flex: 1;
         width: 100%;
 
-        ${media.tabletS} {
+        ${device.tabletS} {
             justify-content: space-around;
             justify-content: space-evenly;
         }
@@ -124,7 +120,7 @@ const StyledHeader = styled.header`
                 text-decoration: underline;
             }
 
-            ${media.tabletS} {
+            ${device.tabletS} {
                 margin: 0;
             }
         }
@@ -139,7 +135,7 @@ const StyledHeader = styled.header`
             font-size: 2rem;
             font-weight: 700;
 
-            ${media.tabletS} {
+            ${device.tabletS} {
                 display: none;
             }
         }

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import SVG from '../components/svg';
-import { spacing, colors, media } from '../util/css-util';
+import { spacing, colors, device } from '../util/css-util';
 
 const icons = [
     {
@@ -35,9 +35,7 @@ const makeStringPlural = (number: number, string: string): string => {
 
 const getElapsedTime = (dateFrom: Date, dateTo: Date): string => {
     const totalMonths =
-        dateTo.getMonth() -
-        dateFrom.getMonth() +
-        12 * (dateTo.getFullYear() - dateFrom.getFullYear());
+        dateTo.getMonth() - dateFrom.getMonth() + 12 * (dateTo.getFullYear() - dateFrom.getFullYear());
 
     const years = Math.floor(totalMonths / 12);
     const months = (totalMonths % 12) + 1;
@@ -62,13 +60,7 @@ const Resume: NextPage = () => (
         <section>
             {icons.map(
                 ({ url, logo, label }: { [key: string]: string }): ReactElement => (
-                    <a
-                        key={logo}
-                        href={url}
-                        rel="noreferrer noopener"
-                        target="_blank"
-                        aria-label={label}
-                    >
+                    <a key={logo} href={url} rel="noreferrer noopener" target="_blank" aria-label={label}>
                         <SVG icon={logo} />
                     </a>
                 )
@@ -145,11 +137,7 @@ const Resume: NextPage = () => (
             </div>
             <div className="company">
                 <div className="company--logo">
-                    <img
-                        src="/images/curio-logo.jpeg"
-                        alt="logo Curio"
-                        className="curio"
-                    />
+                    <img src="/images/curio-logo.jpeg" alt="logo Curio" className="curio" />
                     <h4>Curio - Software development</h4>
                 </div>
                 <div className="date">
@@ -235,7 +223,7 @@ const StyledResume = styled.main`
             }
         }
 
-        ${media.mobileM} {
+        ${device.mobileM} {
             .hide-on-mobile {
                 display: none;
             }
@@ -258,7 +246,7 @@ const StyledResume = styled.main`
             }
         }
 
-        ${media.mobileL} {
+        ${device.mobileL} {
             flex-flow: column nowrap;
         }
     }

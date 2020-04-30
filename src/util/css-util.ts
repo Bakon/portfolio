@@ -1,6 +1,5 @@
-export function multiply(unit: string, factor: number): string {
-    return parseFloat(unit) * factor + unit.toString().replace(/^\d*\.?\d*/, '');
-}
+export const multiply = (unit: string, factor: number): string =>
+    parseFloat(unit) * factor + unit.toString().replace(/^\d*\.?\d*/, '');
 
 export const theme: { [key: string]: string } = {
     background: 'var(--bg)',
@@ -45,20 +44,17 @@ export const spacing: { [key: string]: string } = {
     container: '880px', // 55rem
 };
 
-const sizes: { [key: string]: string } = {
-    mobileS: '380px',
-    mobileM: '440px',
-    mobileL: '540px',
-    tabletS: '600px',
-    tablet: '800px',
-    tabletL: '875px',
+const screenSizes: { [key: string]: number } = {
+    mobileS: 380,
+    mobileM: 440,
+    mobileL: 540,
+    tabletS: 600,
+    tablet: 800,
+    tabletL: 875,
 };
 
-export const media: { [key: string]: string } = {
-    mobileS: `@media (max-width: ${sizes.mobileS})`,
-    mobileM: `@media (max-width: ${sizes.mobileM})`,
-    mobileL: `@media (max-width: ${sizes.mobileL})`,
-    tabletS: `@media (max-width: ${sizes.tabletS})`,
-    tablet: `@media (max-width: ${sizes.tablet})`,
-    tabletL: `@media (max-width: ${sizes.tabletL})`,
-};
+export const device = Object.keys(screenSizes).reduce((acc: {}, cur: string): { [key: string]: string } => {
+    acc[cur] = `@media (max-width: ${screenSizes[cur]}px)`;
+
+    return acc;
+}, {});

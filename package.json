@@ -36,10 +36,5 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/Julicolo/portfolio.git"
-    },
-    "prettier": {
-        "tabWidth": 4,
-        "singleQuote": true,
-        "printWidth": 90
     }
 }
