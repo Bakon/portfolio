@@ -6,7 +6,7 @@ import { spacing, colors, theme, multiply } from '../util/css-util';
 const Footer = ({ className }: { className?: string }): ReactElement => (
     <StyledFooter className={className}>
         <span>&copy; Julio Schilders</span>
-        <a href="https://github.com/Julicolo" aria-label="View GitHub profile">
+        <a href="https://github.com/Bakon" aria-label="View GitHub profile">
             <SVG icon="github" />
         </a>
     </StyledFooter>
