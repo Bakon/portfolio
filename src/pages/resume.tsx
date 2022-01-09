@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
+import React, {ReactElement} from 'react';
 import styled from 'styled-components';
-import { NextPage } from 'next';
+import {NextPage} from 'next';
 import Head from 'next/head';
 import SVG from '../components/svg';
-import { spacing, colors, device } from '../util/css-util';
+import {spacing, colors, device} from '../util/css-util';
 
 const icons = [
     {
@@ -26,16 +26,20 @@ const icons = [
 const makeStringPlural = (number: number, string: string): string => {
     if (number === 1) {
         return number + ' ' + string;
-    } else if (number > 1) {
-        return number + ' ' + string + 's';
-    } else {
-        return '';
     }
+
+    if (number > 1) {
+        return number + ' ' + string + 's';
+    }
+
+    return '';
 };
 
 const getElapsedTime = (dateFrom: Date, dateTo: Date): string => {
     const totalMonths =
-        dateTo.getMonth() - dateFrom.getMonth() + 12 * (dateTo.getFullYear() - dateFrom.getFullYear());
+        dateTo.getMonth() -
+        dateFrom.getMonth() +
+        12 * (dateTo.getFullYear() - dateFrom.getFullYear());
 
     const years = Math.floor(totalMonths / 12);
     const months = (totalMonths % 12) + 1;
@@ -51,6 +55,39 @@ const getElapsedTime = (dateFrom: Date, dateTo: Date): string => {
     }
 };
 
+const resumeData = [
+    {
+        header: 'Languages',
+        items: [
+            'JavaScript',
+            'TypeScript',
+            'Python',
+            'PHP',
+            'SQL',
+            'CSS',
+            'HTML',
+            'XML',
+        ],
+    },
+    {
+        header: 'Libraries & Frameworks',
+        items: [
+            'React.js',
+            'Next.js',
+            'Express.js',
+            'Electron.js',
+            'Pug.js',
+            'jQuery',
+            'Django',
+            'Flask',
+        ],
+    },
+    {
+        header: 'Miscellaneous',
+        items: ['Node.js', 'Git', 'Webpack', 'Sass', 'Styled-components'],
+    },
+];
+
 const Resume: NextPage = () => (
     <StyledResume>
         <Head>
@@ -59,8 +96,14 @@ const Resume: NextPage = () => (
         </Head>
         <section>
             {icons.map(
-                ({ url, logo, label }: { [key: string]: string }): ReactElement => (
-                    <a key={logo} href={url} rel="noreferrer noopener" target="_blank" aria-label={label}>
+                ({url, logo, label}: {[key: string]: string}): ReactElement => (
+                    <a
+                        key={logo}
+                        href={url}
+                        rel="noreferrer noopener"
+                        target="_blank"
+                        aria-label={label}
+                    >
                         <SVG icon={logo} />
                     </a>
                 )
@@ -68,45 +111,19 @@ const Resume: NextPage = () => (
             <div className="personalia">
                 <span>Julio Schilders</span>
                 <span>Software Engineer</span>
-                <span>Breda, Netherlands</span>
+                <span>Eindhoven, Netherlands</span>
             </div>
         </section>
-        <section>
-            <h2>Languages</h2>
-            <div className="row">
-                <span>JavaScript</span>
-                <span>TypeScript</span>
-                <span>Python</span>
-                <span>PHP</span>
-                <span>SQL</span>
-                <span>CSS</span>
-                <span>HTML</span>
-                <span>XML</span>
-            </div>
-        </section>
-        <section>
-            <h2>Libraries &amp; Frameworks</h2>
-            <div className="row">
-                <span>React.js</span>
-                <span>Next.js</span>
-                <span>Express.js</span>
-                <span>Electron.js</span>
-                <span>Pug.js</span>
-                <span>jQuery</span>
-                <span>Flask</span>
-            </div>
-        </section>
-        <section>
-            <h2>Miscellaneous</h2>
-            <div className="row">
-                <span>Node.js</span>
-                <span>Git</span>
-                <span>Webpack</span>
-                <span>Sass</span>
-                <span>Styled-components</span>
-                <span>Flow</span>
-            </div>
-        </section>
+        {resumeData.map(({header, items}) => (
+            <section key={header}>
+                <h2>{header}</h2>
+                <div className="row">
+                    {items.map((language) => (
+                        <span key={language}>{language}</span>
+                    ))}
+                </div>
+            </section>
+        ))}
         <section className="experience">
             <h2>Experience</h2>
             <div className="company">
@@ -119,7 +136,9 @@ const Resume: NextPage = () => (
                 </div>
                 <div className="date">
                     <span>October 2019 - Present</span>
-                    <span>({getElapsedTime(new Date(2019, 9), new Date())})</span>
+                    <span>
+                        ({getElapsedTime(new Date(2019, 9), new Date())})
+                    </span>
                 </div>
             </div>
         </section>
@@ -127,22 +146,34 @@ const Resume: NextPage = () => (
             <h2>Education</h2>
             <div className="company">
                 <div className="company--logo">
-                    <img src="/images/rea-logo.png" alt="logo REA" className="rea" />
+                    <img
+                        src="/images/rea-logo.png"
+                        alt="logo REA"
+                        className="rea"
+                    />
                     <h4>REA - Web development</h4>
                 </div>
                 <div className="date">
                     <span>Augustus 2018 - April 2020</span>
-                    <span>({getElapsedTime(new Date(2018, 7), new Date(2020, 3))})</span>
+                    <span>
+                        ({getElapsedTime(new Date(2018, 7), new Date(2020, 3))})
+                    </span>
                 </div>
             </div>
             <div className="company">
                 <div className="company--logo">
-                    <img src="/images/curio-logo.jpeg" alt="logo Curio" className="curio" />
+                    <img
+                        src="/images/curio-logo.jpeg"
+                        alt="logo Curio"
+                        className="curio"
+                    />
                     <h4>Curio - Software development</h4>
                 </div>
                 <div className="date">
                     <span>Augustus 2016 - October 2017</span>
-                    <span>({getElapsedTime(new Date(2016, 7), new Date(2017, 9))})</span>
+                    <span>
+                        ({getElapsedTime(new Date(2016, 7), new Date(2017, 9))})
+                    </span>
                 </div>
             </div>
         </section>
@@ -257,7 +288,10 @@ const StyledResume = styled.main`
 
         &.github {
             border-radius: 50%;
-            background: radial-gradient(${colors.white} 62%, ${colors.black} 69%);
+            background: radial-gradient(
+                ${colors.white} 62%,
+                ${colors.black} 69%
+            );
         }
 
         &.linkedin {

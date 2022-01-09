@@ -1,6 +1,6 @@
-import React, { Component, ReactElement, Fragment } from 'react';
+import React, {Component, ReactElement, Fragment} from 'react';
 import styled from 'styled-components';
-import { NextPageContext } from 'next';
+import {NextPageContext} from 'next';
 import Head from 'next/head';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default class Error extends Component<Props> {
-    static async getInitialProps({ res }: NextPageContext): Promise<Props> {
+    static async getInitialProps({res}: NextPageContext): Promise<Props> {
         return {
             title: `Error: ${res && res.statusCode}`,
             errorCode: res && res.statusCode,
@@ -17,7 +17,7 @@ export default class Error extends Component<Props> {
     }
 
     render(): ReactElement {
-        const { title, errorCode } = this.props;
+        const {title, errorCode} = this.props;
         return (
             <Fragment>
                 <Head>

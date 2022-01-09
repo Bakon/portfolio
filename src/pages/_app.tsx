@@ -1,12 +1,12 @@
-import React, { ReactElement } from 'react';
+import React, {ReactElement} from 'react';
 import styled from 'styled-components';
-import { AppProps } from 'next/app';
+import {AppProps} from 'next/app';
 import Stylesheet from '../util/stylesheet';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import { spacing, theme } from '../util/css-util';
+import {spacing, theme} from '../util/css-util';
 
-const App = ({ Component, pageProps }: AppProps): ReactElement => (
+const App = ({Component, pageProps}: AppProps): ReactElement => (
     <StyledContainer>
         <Stylesheet />
         <Header />

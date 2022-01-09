@@ -1,14 +1,14 @@
-import React, { ReactElement, SetStateAction, useState } from 'react';
+import React, {ReactElement, SetStateAction, useState} from 'react';
 import styled from 'styled-components';
-import { colors } from '../util/css-util';
+import {colors} from '../util/css-util';
 
 type Props = {
     onClick: () => SetStateAction<void>;
-    icons: { [key: string]: ReactElement };
+    icons: {[key: string]: ReactElement};
     className?: string;
 };
 
-const Toggle = ({ className, onClick, icons }: Props): ReactElement => {
+const Toggle = ({className, onClick, icons}: Props): ReactElement => {
     const [hasClicked, toggleFirstClick] = useState<boolean>(false);
 
     return (
@@ -22,7 +22,9 @@ const Toggle = ({ className, onClick, icons }: Props): ReactElement => {
             <div className={`thumb ${hasClicked ? 'fade' : ''}`} />
             <div className="track">
                 <div className="track-button checked">{icons['checked']}</div>
-                <div className="track-button unchecked">{icons['unchecked']}</div>
+                <div className="track-button unchecked">
+                    {icons['unchecked']}
+                </div>
             </div>
         </StyledToggle>
     );

@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
+import React, {ReactElement} from 'react';
 import styled from 'styled-components';
 import SVG from './svg';
-import { spacing, colors, theme, multiply } from '../util/css-util';
+import {spacing, colors, theme, multiply} from '../util/css-util';
 
-const Footer = ({ className }: { className?: string }): ReactElement => (
+const Footer = ({className}: {className?: string}): ReactElement => (
     <StyledFooter className={className}>
         <span>&copy; Julio Schilders</span>
         <a href="https://github.com/Bakon" aria-label="View GitHub profile">
@@ -35,7 +35,10 @@ const StyledFooter = styled.footer`
 
         &.github {
             border-radius: 50%;
-            background: radial-gradient(${colors.white} 62%, ${colors.black} 69%);
+            background: radial-gradient(
+                ${colors.white} 62%,
+                ${colors.black} 69%
+            );
         }
     }
 

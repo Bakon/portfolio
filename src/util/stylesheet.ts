@@ -1,14 +1,14 @@
-import { createGlobalStyle } from 'styled-components';
-import { colors } from './css-util';
+import {createGlobalStyle} from 'styled-components';
+import {colors} from './css-util';
 
-const lightTheme: { [key: string]: string } = {
+const lightTheme: {[key: string]: string} = {
     background: colors.white,
     color: colors.text,
     link: colors.blue,
     seperator: colors.lightGray,
 };
 
-const darkTheme: { [key: string]: string } = {
+const darkTheme: {[key: string]: string} = {
     background: colors.dark,
     color: colors.white,
     link: colors.lightBlue,

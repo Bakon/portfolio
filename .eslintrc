@@ -16,8 +16,6 @@
         }
     },
     "rules": {
-        "one-var": ["error", {"const": "never", "let": "never"}],
-        "no-var": "error",
         "yoda": "warn",
         "semi": "warn",
         "arrow-parens": "warn",
@@ -25,6 +23,7 @@
         "prefer-const": "warn",
         "prefer-arrow-callback": "warn",
         "prefer-rest-params": "warn",
+        "no-var": "error",
         "no-useless-constructor": "error",
         "no-useless-rename": "error"
     }
