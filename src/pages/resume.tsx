@@ -125,7 +125,7 @@ const Resume: NextPage = () => (
             </section>
         ))}
         <section className="experience">
-            <h2>Experience</h2>
+            <h2 className="header">Experience</h2>
             <div className="company">
                 <div className="company--logo">
                     <SVG icon="fpLogo" />
@@ -143,7 +143,7 @@ const Resume: NextPage = () => (
             </div>
         </section>
         <section className="experience">
-            <h2>Education</h2>
+            <h2 className="header">Education</h2>
             <div className="company">
                 <div className="company--logo">
                     <img

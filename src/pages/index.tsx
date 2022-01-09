@@ -16,8 +16,17 @@ const Main: NextPage = () => (
                 Welcome to my little dot on the big internet!
             </h2>
             <p>
-                I&apos;m a software engineer mainly building (web) applications
-                with JavaScript, TypeScript, and React. I work at{' '}
+                I&apos;m a social and passionate software engineer that&apos;s
+                not afraid to ask questions. My strongest programming language
+                is JavaScript and I&apos;m most knowledgeable in React.
+            </p>
+            <p>
+                I enjoy the challenges that come with programming. There&apos;s
+                always something new to learn, many things to improve at, and
+                even more problems to solve
+            </p>
+            <p>
+                I&apos;m currently employed at{' '}
                 <a href="https://floorplanner.com" rel="noreferrer noopener">
                     Floorplanner
                 </a>{' '}
@@ -27,17 +36,6 @@ const Main: NextPage = () => (
                     Sidney
                 </a>
                 .
-            </p>
-            <p>
-                I enjoy writing code, I like to compare it with playing a MMO.
-                There are many languages and frameworks to learn (skills to
-                level up) and there&apos;s a never ending series of quests to
-                complete (problems to solve).
-            </p>
-            <p>
-                PS: This website is still under construction, so it&apos;s
-                looking a bit empty right now... So make sure to come back soon,
-                there might even be a blog post by then!
             </p>
         </section>
     </StyledMain>
