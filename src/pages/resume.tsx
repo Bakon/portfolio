@@ -116,7 +116,7 @@ const Resume: NextPage = () => (
         </section>
         {resumeData.map(({header, items}) => (
             <section key={header}>
-                <h2>{header}</h2>
+                <h2 className="header">{header}</h2>
                 <div className="row">
                     {items.map((language) => (
                         <span key={language}>{language}</span>
@@ -193,7 +193,7 @@ const StyledResume = styled.main`
     }
 
     section {
-        h2 {
+        .header {
             color: ${colors.blue};
         }
 
