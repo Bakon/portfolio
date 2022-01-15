@@ -24,7 +24,7 @@ const icons = [
 ];
 
 const makeStringPlural = (number: number, string: string): string => {
-    return number === 1 ? `${number} ${string}s` : `${number} ${string}`;
+    return number === 1 ? `${number} ${string}` : `${number} ${string}s`;
 };
 
 const getElapsedTime = (dateFrom: Date, dateTo: Date): string => {
