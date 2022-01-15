@@ -24,15 +24,7 @@ const icons = [
 ];
 
 const makeStringPlural = (number: number, string: string): string => {
-    if (number === 1) {
-        return number + ' ' + string;
-    }
-
-    if (number > 1) {
-        return number + ' ' + string + 's';
-    }
-
-    return '';
+    return number === 1 ? `${number} ${string}s` : `${number} ${string}`;
 };
 
 const getElapsedTime = (dateFrom: Date, dateTo: Date): string => {
@@ -46,45 +38,51 @@ const getElapsedTime = (dateFrom: Date, dateTo: Date): string => {
     const formattedYears = makeStringPlural(years, 'year');
     const formattedMonths = makeStringPlural(months, 'month');
 
-    if (formattedYears && formattedMonths) {
-        return formattedYears + ' - ' + formattedMonths;
-    } else if (formattedYears) {
-        return formattedYears;
-    } else {
-        return formattedMonths;
-    }
+    if (years && months) return `${formattedYears} - ${formattedMonths}`;
+    if (years) return formattedYears;
+
+    return formattedMonths;
 };
 
 const resumeData = [
     {
-        header: 'Languages',
+        header: 'Programming languages',
         items: [
             'JavaScript',
             'TypeScript',
             'Python',
             'PHP',
             'SQL',
-            'CSS',
-            'HTML',
             'XML',
+            'HTML',
+            'CSS',
         ],
     },
     {
         header: 'Libraries & Frameworks',
         items: [
-            'React.js',
-            'Next.js',
-            'Express.js',
-            'Electron.js',
-            'Pug.js',
+            'React',
+            'Next',
+            'Express',
+            'Electron',
+            'Angular',
             'jQuery',
             'Django',
-            'Flask',
         ],
     },
     {
-        header: 'Miscellaneous',
-        items: ['Node.js', 'Git', 'Webpack', 'Sass', 'Styled-components'],
+        header: 'Tools',
+        items: [
+            'Git',
+            'Docker',
+            'AWS',
+            'Node',
+            'i18next',
+            'Webpack',
+            'Styled-components',
+            'Flow',
+            'Flask',
+        ],
     },
 ];
 
@@ -128,11 +126,19 @@ const Resume: NextPage = () => (
             <h2 className="header">Experience</h2>
             <div className="company">
                 <div className="company--logo">
+                    <h4>Codecrashers - Freelance Software engineer</h4>
+                </div>
+                <div className="date">
+                    <span>January 2022 - Present</span>
+                    <span>
+                        ({getElapsedTime(new Date(2022, 0), new Date())})
+                    </span>
+                </div>
+            </div>
+            <div className="company">
+                <div className="company--logo">
                     <SVG icon="fpLogo" />
-                    <h4>
-                        Floorplanner - Front-end dev
-                        <span className="hide-on-mobile">eloper</span>
-                    </h4>
+                    <h4>Floorplanner - Software engineer</h4>
                 </div>
                 <div className="date">
                     <span>October 2019 - Present</span>
@@ -153,12 +159,7 @@ const Resume: NextPage = () => (
                     />
                     <h4>REA - Web development</h4>
                 </div>
-                <div className="date">
-                    <span>Augustus 2018 - April 2020</span>
-                    <span>
-                        ({getElapsedTime(new Date(2018, 7), new Date(2020, 3))})
-                    </span>
-                </div>
+                <span>2018 - 2020</span>
             </div>
             <div className="company">
                 <div className="company--logo">
@@ -169,16 +170,11 @@ const Resume: NextPage = () => (
                     />
                     <h4>Curio - Software development</h4>
                 </div>
-                <div className="date">
-                    <span>Augustus 2016 - October 2017</span>
-                    <span>
-                        ({getElapsedTime(new Date(2016, 7), new Date(2017, 9))})
-                    </span>
-                </div>
+                <span>2015 - 2018</span>
             </div>
         </section>
         <section>
-            <a href="/assets/resume.pdf" download="julio-schilders-resume.pdf">
+            <a href="/assets/resume.pdf" download="resume-julio-schilders.pdf">
                 <button className="download">Download as PDF</button>
             </a>
         </section>
@@ -251,12 +247,6 @@ const StyledResume = styled.main`
 
             &.curio {
                 border-color: ${colors.black};
-            }
-        }
-
-        ${device.mobileM} {
-            .hide-on-mobile {
-                display: none;
             }
         }
     }

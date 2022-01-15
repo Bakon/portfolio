@@ -17,8 +17,9 @@ const Main: NextPage = () => (
             </h2>
             <p>
                 I&apos;m a social and passionate software engineer that&apos;s
-                not afraid to ask questions. My strongest programming language
-                is JavaScript and I&apos;m most knowledgeable in React.
+                not afraid to ask questions. <br />
+                My strongest programming language is JavaScript, I&apos;m most
+                knowledgeable in React.
             </p>
             <p>
                 I enjoy the challenges that come with programming. There&apos;s
@@ -30,8 +31,7 @@ const Main: NextPage = () => (
                 <a href="https://floorplanner.com" rel="noreferrer noopener">
                     Floorplanner
                 </a>{' '}
-                as a front-end developer, together with my good friend &amp;
-                teacher{' '}
+                together with my good friend &amp; teacher{' '}
                 <a href="https://sidneyliebrand.io/" rel="noreferrer noopener">
                     Sidney
                 </a>
