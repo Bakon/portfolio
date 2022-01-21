@@ -79,9 +79,15 @@ const resumeData = [
             'Node',
             'i18next',
             'Webpack',
-            'Styled-components',
+            'Babel',
+            'Rollup',
+            'Gulp',
             'Flow',
             'Flask',
+            'CSS Modules',
+            'Styled-components',
+            'Sass',
+            'Pug',
         ],
     },
 ];
@@ -126,17 +132,6 @@ const Resume: NextPage = () => (
             <h2 className="header">Experience</h2>
             <div className="company">
                 <div className="company--logo">
-                    <h4>Codecrashers - Freelance Software engineer</h4>
-                </div>
-                <div className="date">
-                    <span>January 2022 - Present</span>
-                    <span>
-                        ({getElapsedTime(new Date(2022, 0), new Date())})
-                    </span>
-                </div>
-            </div>
-            <div className="company">
-                <div className="company--logo">
                     <SVG icon="fpLogo" />
                     <h4>Floorplanner - Software engineer</h4>
                 </div>
@@ -144,6 +139,17 @@ const Resume: NextPage = () => (
                     <span>October 2019 - Present</span>
                     <span>
                         ({getElapsedTime(new Date(2019, 9), new Date())})
+                    </span>
+                </div>
+            </div>
+            <div className="company">
+                <div className="company--logo">
+                    <h4>Codecrashers - Freelance Software engineer</h4>
+                </div>
+                <div className="date">
+                    <span>January 2022 - Present</span>
+                    <span>
+                        ({getElapsedTime(new Date(2022, 0), new Date())})
                     </span>
                 </div>
             </div>
