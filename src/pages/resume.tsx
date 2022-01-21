@@ -133,7 +133,7 @@ const Resume: NextPage = () => (
             <div className="company">
                 <div className="company--logo">
                     <SVG icon="fpLogo" />
-                    <h4>Floorplanner - Software engineer</h4>
+                    <h4>Floorplanner - Front-end Engineer</h4>
                 </div>
                 <div className="date">
                     <span>October 2019 - Present</span>
@@ -144,7 +144,7 @@ const Resume: NextPage = () => (
             </div>
             <div className="company">
                 <div className="company--logo">
-                    <h4>Codecrashers - Freelance Software engineer</h4>
+                    <h4>Codecrashers - Lead Front-end Engineer</h4>
                 </div>
                 <div className="date">
                     <span>January 2022 - Present</span>
@@ -181,7 +181,7 @@ const Resume: NextPage = () => (
         </section>
         <section>
             <a href="/assets/resume.pdf" download="resume-julio-schilders.pdf">
-                <button className="download">Download as PDF</button>
+                <button className="download">Download PDF</button>
             </a>
         </section>
     </StyledResume>
