@@ -16,11 +16,6 @@ const icons = [
         logo: 'gmail',
         label: 'Send email',
     },
-    {
-        url: 'https://stackoverflow.com/users/story/11355018',
-        logo: 'stackoverflow',
-        label: 'View Stackoverflow profile',
-    },
 ];
 
 const makeStringPlural = (number: number, string: string): string => {
@@ -67,27 +62,28 @@ const resumeData = [
             'Electron',
             'Angular',
             'jQuery',
+            'Flask',
             'Django',
+            'Laravel',
         ],
     },
     {
         header: 'Tools',
         items: [
             'Git',
-            'Docker',
-            'AWS',
             'Node',
             'i18next',
+            'Docker',
             'Webpack',
-            'Babel',
             'Rollup',
             'Gulp',
-            'Flow',
-            'Flask',
-            'CSS Modules',
-            'Styled-components',
-            'Sass',
             'Pug',
+            'Flow',
+            'Babel',
+            'AWS',
+            'Sass',
+            'CSS-Modules',
+            'Styled-components',
         ],
     },
 ];
@@ -144,6 +140,11 @@ const Resume: NextPage = () => (
             </div>
             <div className="company">
                 <div className="company--logo">
+                    <img
+                        src="/images/codecrashers-logo.png"
+                        alt="logo CodeCrashers"
+                        className="codecrashers"
+                    />
                     <h4>Codecrashers - Lead Front-end Engineer</h4>
                 </div>
                 <div className="date">
@@ -180,7 +181,10 @@ const Resume: NextPage = () => (
             </div>
         </section>
         <section>
-            <a href="/assets/resume.pdf" download="resume-julio-schilders.pdf">
+            <a
+                href="/assets/resume-julio-schilders.pdf"
+                download="resume-julio-schilders.pdf"
+            >
                 <button className="download">Download PDF</button>
             </a>
         </section>
@@ -243,16 +247,21 @@ const StyledResume = styled.main`
 
         img {
             border-radius: 50%;
-            max-width: 35px;
+            width: ${spacing.mediumLarge};
+            height: ${spacing.mediumLarge};
             margin-right: ${spacing.medium};
             border: 2px solid;
+
+            &.codecrashers {
+                border-color: ${colors.ccBlack};
+            }
 
             &.rea {
                 border-color: ${colors.reaGreen};
             }
 
             &.curio {
-                border-color: ${colors.black};
+                border-color: ${colors.curioYellow};
             }
         }
     }

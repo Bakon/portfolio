@@ -11,9 +11,9 @@ const Main: NextPage = () => (
             <link rel="canonical" href="https://jschilders.dev" />
         </Head>
         <section>
-            <h1>Hiya, I&apos;m Julio</h1>
+            <h1>Hiya, I&apos;m Julio Schilders 👋</h1>
             <h2 className="subheading">
-                Welcome to my little dot on the big internet!
+                Welcome to my little dot on the internet!
             </h2>
             <p>
                 I&apos;m a social and passionate software engineer that&apos;s
@@ -22,20 +22,44 @@ const Main: NextPage = () => (
                 knowledgeable in React.
             </p>
             <p>
-                I enjoy the challenges that come with programming. There&apos;s
-                always something new to learn, many things to improve at, and
-                even more problems to solve
+                I enjoy the fun little challenges that come with software
+                engineering.
+                <br /> There&apos;s always something new to learn, things to
+                improve at, and many problems to solve
             </p>
             <p>
-                I&apos;m currently employed at{' '}
+                I&apos;m currently employed full-time at{' '}
                 <a href="https://floorplanner.com" rel="noreferrer noopener">
                     Floorplanner
                 </a>{' '}
-                together with my good friend &amp; teacher{' '}
+                together with my long-term friend &amp; mentor{' '}
                 <a href="https://sidneyliebrand.io/" rel="noreferrer noopener">
                     Sidney
                 </a>
-                .
+                .{' '}
+                <a href="https://floorplanner.com" rel="noreferrer noopener">
+                    Floorplanner
+                </a>{' '}
+                is an architectural visualisation tool, which let&apos;s you
+                draw beautiful 2D & 3D floorplans. <br />
+                And it&apos;s all in the browser! Pretty cool right?
+            </p>
+            <p>
+                I&apos;m also the lead front-end engineer at CodeCrashers, which
+                is an upcoming platform where individuals and companies will be
+                able to purchase a license to view courses and make assignments.
+                <br /> These assignments will be reviewed, and you will get
+                feedback from real teachers and developers!
+            </p>
+            <p>
+                My tiny website is quite empty as you can see, but if
+                you&apos;re looking for some more fun stuff to read, make sure
+                to check out{' '}
+                <a href="https://sidneyliebrand.io/" rel="noreferrer noopener">
+                    Sidney
+                </a>
+                &apos;s blog. He occasionally writes fun and informative blog
+                posts, where he shares some of his experience and knowledge.
             </p>
         </section>
     </StyledMain>

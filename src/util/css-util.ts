@@ -14,6 +14,7 @@ export const colors: {[key: string]: string} = {
     black: '#181717',
     dark: '#282c34',
     text: '#3f4954',
+    ccBlack: '#141414',
     // white
     white: '#f5f5f5',
     snow: '#fafafa',
@@ -28,6 +29,8 @@ export const colors: {[key: string]: string} = {
     // greens
     green: '#5aac44',
     reaGreen: '#159499',
+    // yellows
+    curioYellow: '#FFCC00',
 };
 
 const baseSpacing = '0.3125rem';
