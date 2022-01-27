@@ -2,7 +2,9 @@
 
 My personal portfolio repository.
 Whenever deployed to this repository, a web hook from [Vercel](https://vercel.com/) will get fired.
+
 This builds the project on one of their servers and returns a couple of URL's, for previewing, etc.
+
 The master branch is in sync with my own domains.
 
 ## Usage
