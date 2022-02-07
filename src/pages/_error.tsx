@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import {NextPageContext} from 'next';
 import Head from 'next/head';
 
-type Props = {
+type ErrorProps = {
     title: string;
     errorCode?: number;
 };
 
-export default class Error extends Component<Props> {
-    static async getInitialProps({res}: NextPageContext): Promise<Props> {
+export default class Error extends Component<ErrorProps> {
+    static async getInitialProps({res}: NextPageContext): Promise<ErrorProps> {
         return {
             title: `Error: ${res && res.statusCode}`,
             errorCode: res && res.statusCode,

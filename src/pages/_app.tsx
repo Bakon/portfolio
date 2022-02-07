@@ -1,21 +1,21 @@
 import React, {ReactElement} from 'react';
 import styled from 'styled-components';
 import {AppProps} from 'next/app';
-import Stylesheet from '../util/stylesheet';
+import {Stylesheet} from '../util/stylesheet';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import {spacing, theme} from '../util/css-util';
 
-const App = ({Component, pageProps}: AppProps): ReactElement => (
-    <StyledContainer>
-        <Stylesheet />
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
-    </StyledContainer>
-);
-
-export default App;
+export default function App({Component, pageProps}: AppProps): ReactElement {
+    return (
+        <StyledContainer>
+            <Stylesheet />
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+        </StyledContainer>
+    );
+}
 
 const StyledContainer = styled.div`
     display: flex;
@@ -24,7 +24,7 @@ const StyledContainer = styled.div`
 
     background: ${theme.background};
 
-    > main {
+    main {
         flex: 1;
         margin: auto;
         width: 100%;

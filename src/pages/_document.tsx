@@ -8,7 +8,7 @@ import Document, {
     DocumentInitialProps,
 } from 'next/document';
 import {ServerStyleSheet} from 'styled-components';
-import ThemeScript from '../util/toggle-script';
+import {ThemeScript} from '../util/toggle-script';
 
 export default class extends Document {
     static async getInitialProps(
@@ -18,13 +18,16 @@ export default class extends Document {
         const originalRenderPage = ctx.renderPage;
 
         try {
-            ctx.renderPage = (): ReturnType<typeof ctx.renderPage> =>
-                originalRenderPage({
-                    enhanceApp: (App) => (props): ReactElement =>
-                        stylesheet.collectStyles(<App {...props} />),
-                });
-
             const initialProps = await Document.getInitialProps(ctx);
+
+            ctx.renderPage = (): ReturnType<typeof ctx.renderPage> => {
+                return originalRenderPage({
+                    enhanceApp: (App) => (props): ReactElement => {
+                        return stylesheet.collectStyles(<App {...props} />);
+                    },
+                });
+            };
+
             return {
                 ...initialProps,
                 styles: [initialProps.styles, stylesheet.getStyleElement()],
@@ -44,7 +47,7 @@ export default class extends Document {
                 />
                 <meta
                     name="description"
-                    content="I'm Julio Schilders, a software engineer, mainly building (web) applications with TypeScript, JavaScript and React."
+                    content="Hiya, I'm Julio Schilders 👋  Welcome to my little dot on the internet! I'm a social and passionate software engineer that's not afraid to ask questions. My strongest programming language is JavaScript, I'm most knowledgeable in React."
                 />
                 <meta name="author" content="Julio Schilders" />
                 <Head />
