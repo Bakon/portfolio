@@ -4,7 +4,7 @@
     "description": "Portfolio Julio Schilders",
     "main": "index.ts",
     "scripts": {
-        "dev": "next",
+        "develop": "next",
         "start": "next start",
         "build": "next build",
         "export": "next export"
@@ -36,5 +36,11 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/Bakon/portfolio.git"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "singleQuote": true,
+        "printWidth": 80,
+        "bracketSpacing": false
     }
 }

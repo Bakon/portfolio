@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
+import React, {ReactElement} from 'react';
 import styled from 'styled-components';
-import { NextPage } from 'next';
+import {NextPage} from 'next';
 import Head from 'next/head';
 import SVG from '../components/svg';
-import { spacing, colors, device } from '../util/css-util';
+import {spacing, colors, device} from '../util/css-util';
 
 const icons = [
     {
@@ -16,174 +16,222 @@ const icons = [
         logo: 'gmail',
         label: 'Send email',
     },
-    {
-        url: 'https://stackoverflow.com/users/story/11355018',
-        logo: 'stackoverflow',
-        label: 'View Stackoverflow profile',
-    },
 ];
 
 const makeStringPlural = (number: number, string: string): string => {
-    if (number === 1) {
-        return number + ' ' + string;
-    } else if (number > 1) {
-        return number + ' ' + string + 's';
-    } else {
-        return '';
-    }
+    return number === 1 ? `${number} ${string}` : `${number} ${string}s`;
 };
 
 const getElapsedTime = (dateFrom: Date, dateTo: Date): string => {
     const totalMonths =
-        dateTo.getMonth() - dateFrom.getMonth() + 12 * (dateTo.getFullYear() - dateFrom.getFullYear());
+        dateTo.getMonth() -
+        dateFrom.getMonth() +
+        12 * (dateTo.getFullYear() - dateFrom.getFullYear());
 
     const years = Math.floor(totalMonths / 12);
     const months = (totalMonths % 12) + 1;
     const formattedYears = makeStringPlural(years, 'year');
     const formattedMonths = makeStringPlural(months, 'month');
 
-    if (formattedYears && formattedMonths) {
-        return formattedYears + ' - ' + formattedMonths;
-    } else if (formattedYears) {
-        return formattedYears;
-    } else {
-        return formattedMonths;
-    }
+    if (years && months) return `${formattedYears} - ${formattedMonths}`;
+    if (years) return formattedYears;
+
+    return formattedMonths;
 };
 
-const Resume: NextPage = () => (
-    <StyledResume>
-        <Head>
-            <title>Julio Schilders | Resume</title>
-            <link rel="canonical" href="https://jschilders.dev/resume" />
-        </Head>
-        <section>
-            {icons.map(
-                ({ url, logo, label }: { [key: string]: string }): ReactElement => (
-                    <a key={logo} href={url} rel="noreferrer noopener" target="_blank" aria-label={label}>
+const resumeData = [
+    {
+        header: '(Programming) languages',
+        items: [
+            'JavaScript',
+            'TypeScript',
+            'PHP',
+            'Python',
+            'SQL',
+            'XML',
+            'HTML',
+            'CSS',
+        ],
+    },
+    {
+        header: 'Libraries & Frameworks',
+        items: [
+            'React',
+            'Redux',
+            'Electron',
+            'Next',
+            'Express',
+            'Angular',
+            'jQuery',
+            'Laravel',
+            'Django',
+        ],
+    },
+    {
+        header: 'Other tools',
+        items: [
+            'Git',
+            'Node',
+            'NPM',
+            'Yarn',
+            'Lerna',
+            'Webpack',
+            'Rollup',
+            'Gulp',
+            'Pug',
+            'Babel',
+            'i18next',
+            'Docker',
+            'AWS',
+            'WordPress',
+            'MySQL',
+            'Sass',
+            'CSS-Modules',
+            'Styled-components',
+        ],
+    },
+];
+
+export default function Resume(): ReactElement<NextPage> {
+    return (
+        <StyledResume>
+            <Head>
+                <title>Julio Schilders | Resume</title>
+                <link rel="canonical" href="https://jschilders.dev/resume" />
+            </Head>
+            <section>
+                {icons.map(({url, logo, label}) => (
+                    <a
+                        key={logo}
+                        href={url}
+                        rel="noreferrer noopener"
+                        target="_blank"
+                        aria-label={label}
+                    >
                         <SVG icon={logo} />
                     </a>
-                )
-            )}
-            <div className="personalia">
-                <span>Julio Schilders</span>
-                <span>Software Engineer</span>
-                <span>Breda, Netherlands</span>
-            </div>
-        </section>
-        <section>
-            <h2>Languages</h2>
-            <div className="row">
-                <span>JavaScript</span>
-                <span>TypeScript</span>
-                <span>Python</span>
-                <span>PHP</span>
-                <span>SQL</span>
-                <span>CSS</span>
-                <span>HTML</span>
-                <span>XML</span>
-            </div>
-        </section>
-        <section>
-            <h2>Libraries &amp; Frameworks</h2>
-            <div className="row">
-                <span>React.js</span>
-                <span>Next.js</span>
-                <span>Express.js</span>
-                <span>Electron.js</span>
-                <span>Pug.js</span>
-                <span>jQuery</span>
-                <span>Flask</span>
-            </div>
-        </section>
-        <section>
-            <h2>Miscellaneous</h2>
-            <div className="row">
-                <span>Node.js</span>
-                <span>Git</span>
-                <span>Webpack</span>
-                <span>Sass</span>
-                <span>Styled-components</span>
-                <span>Flow</span>
-            </div>
-        </section>
-        <section className="experience">
-            <h2>Experience</h2>
-            <div className="company">
-                <div className="company--logo">
+                ))}
+                <div className="personalia">
+                    <span>Julio Schilders</span>
+                    <span>Software Engineer</span>
+                    <span>Eindhoven, Netherlands</span>
+                </div>
+            </section>
+            {resumeData.map(({header, items}) => (
+                <section key={header}>
+                    <h2 className="header">{header}</h2>
+                    <div className="row">
+                        {items.map((language) => (
+                            <span key={language}>{language}</span>
+                        ))}
+                    </div>
+                </section>
+            ))}
+            <section className="experience">
+                <h2 className="header">Experience</h2>
+                <div className="company">
                     <SVG icon="fpLogo" />
-                    <h4>
-                        Floorplanner - Front-end dev
-                        <span className="hide-on-mobile">eloper</span>
-                    </h4>
+                    <div className="company-details">
+                        <span className="title">Front-end Engineer</span>
+                        <span className="location">
+                            Floorplanner, Rotterdam (Full-time)
+                        </span>
+                        <span className="date">
+                            <span>October 2019 - Present</span>
+                            <span>
+                                ({getElapsedTime(new Date(2019, 9), new Date())}
+                                )
+                            </span>
+                        </span>
+                    </div>
                 </div>
-                <div className="date">
-                    <span>October 2019 - Present</span>
-                    <span>({getElapsedTime(new Date(2019, 9), new Date())})</span>
+                <div className="company">
+                    <img
+                        src="/images/codecrashers-logo.png"
+                        alt="logo CodeCrashers"
+                        className="codecrashers"
+                    />
+                    <div className="company-details">
+                        <span className="title">Lead Front-end Engineer</span>
+                        <span className="location">
+                            CodeCrashers, Eindhoven (Freelance)
+                        </span>
+                        <span className="date">
+                            <span>January 2022 - Present</span>
+                            <span>
+                                ({getElapsedTime(new Date(2022, 0), new Date())}
+                                )
+                            </span>
+                        </span>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section className="experience">
-            <h2>Education</h2>
-            <div className="company">
-                <div className="company--logo">
-                    <img src="/images/rea-logo.png" alt="logo REA" className="rea" />
-                    <h4>REA - Web development</h4>
+            </section>
+            <section className="experience">
+                <h2 className="header">Education</h2>
+                <div className="company">
+                    <img
+                        className="rea"
+                        src="/images/rea-logo.png"
+                        alt="logo REA"
+                    />
+                    <div className="company-details">
+                        <span className="title">Web development</span>
+                        <span className="location">REA, Eindhoven</span>
+                        <span className="date">February 2018 - July 2020</span>
+                    </div>
                 </div>
-                <div className="date">
-                    <span>Augustus 2018 - April 2020</span>
-                    <span>({getElapsedTime(new Date(2018, 7), new Date(2020, 3))})</span>
+                <div className="company">
+                    <img
+                        className="curio"
+                        src="/images/curio-logo.jpeg"
+                        alt="logo Curio"
+                    />
+                    <div className="company-details">
+                        <span className="title">Software development</span>
+                        <span className="location">Curio, Breda</span>
+                        <span className="date">August 2015 - July 2017</span>
+                    </div>
                 </div>
-            </div>
-            <div className="company">
-                <div className="company--logo">
-                    <img src="/images/curio-logo.jpeg" alt="logo Curio" className="curio" />
-                    <h4>Curio - Software development</h4>
-                </div>
-                <div className="date">
-                    <span>Augustus 2016 - October 2017</span>
-                    <span>({getElapsedTime(new Date(2016, 7), new Date(2017, 9))})</span>
-                </div>
-            </div>
-        </section>
-        <section>
-            <a href="/assets/resume.pdf" download="julio-schilders-resume.pdf">
-                <button className="download">Download as PDF</button>
-            </a>
-        </section>
-    </StyledResume>
-);
-
-export default Resume;
+            </section>
+            <section>
+                <a
+                    href="/assets/resume-julio-schilders.pdf"
+                    download="resume-julio-schilders.pdf"
+                >
+                    <button className="download">Download resume</button>
+                </a>
+            </section>
+        </StyledResume>
+    );
+}
 
 const StyledResume = styled.main`
     a + a {
-        margin-left: ${spacing.large};
+        margin-left: ${spacing.mediumLarge};
+    }
+
+    span {
+        line-height: 1.4;
     }
 
     section {
-        h2 {
+        .header {
             color: ${colors.blue};
+            margin-bottom: 0.75rem;
         }
 
-        &.experience {
-            h2 {
-                margin-bottom: ${spacing.small};
-            }
-
-            .elapsed-time {
-                color: gray;
-            }
+        &.experience .elapsed-time {
+            color: gray;
         }
     }
 
     .personalia {
         display: flex;
         flex-flow: column nowrap;
-        margin-top: ${spacing.medium};
+        margin-top: ${spacing.regular};
 
         span {
-            margin: ${spacing.small} 0;
+            line-height: 1.6;
         }
     }
 
@@ -193,71 +241,92 @@ const StyledResume = styled.main`
 
         span {
             margin-right: ${spacing.medium};
-            line-height: 1.5;
+            line-height: 1.6;
         }
     }
 
     .company {
-        margin-bottom: ${spacing.medium};
+        margin: 1rem 0 1.5rem;
         display: flex;
-        flex-flow: column nowrap;
+        flex-flow: row nowrap;
+        align-items: center;
 
-        &--logo {
+        &-details {
+            display: flex;
+            flex-flow: column wrap;
+            align-items: flex-start;
+        }
+
+        span {
+            line-height: 1.4;
+        }
+
+        .location {
+            font-size: 0.8rem;
+        }
+
+        .date {
+            font-size: 0.8rem;
             display: flex;
             flex-flow: row wrap;
-            align-items: center;
+            color: #bebebe;
+
+            ${device.mobileL} {
+                flex-flow: column nowrap;
+            }
+
+            span {
+                color: #bebebe;
+            }
+
+            span:first-child {
+                margin-right: ${spacing.small};
+            }
+        }
+
+        svg {
+            margin-left: -2px;
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            min-height: 56px;
         }
 
         img {
             border-radius: 50%;
-            max-width: 35px;
             margin-right: ${spacing.medium};
-            border: 2px solid;
+            border: 4px solid;
+            width: 52px;
+            height: 52px;
+            min-width: 52px;
+            min-height: 52px;
+
+            &.codecrashers {
+                border-color: ${colors.ccBlack};
+            }
 
             &.rea {
                 border-color: ${colors.reaGreen};
             }
 
             &.curio {
-                border-color: ${colors.black};
+                border-color: ${colors.curioYellow};
             }
-        }
-
-        ${device.mobileM} {
-            .hide-on-mobile {
-                display: none;
-            }
-        }
-    }
-
-    .date {
-        display: flex;
-        flex-flow: row wrap;
-
-        span {
-            margin: ${spacing.small} 0;
-
-            &:first-child {
-                margin-right: ${spacing.regular};
-            }
-
-            &:last-child {
-                color: ${colors.gray};
-            }
-        }
-
-        ${device.mobileL} {
-            flex-flow: column nowrap;
         }
     }
 
     svg {
-        width: ${spacing.mediumExtraLarge};
-        height: ${spacing.mediumExtraLarge};
+        width: ${spacing.mediumLarge};
+        min-width: ${spacing.mediumLarge};
+        height: ${spacing.mediumLarge};
+        min-height: ${spacing.mediumLarge};
 
         &.github {
             border-radius: 50%;
-            background: radial-gradient(${colors.white} 62%, ${colors.black} 69%);
+            background: radial-gradient(
+                ${colors.white} 62%,
+                ${colors.black} 69%
+            );
         }
 
         &.linkedin {
@@ -272,13 +341,16 @@ const StyledResume = styled.main`
     }
 
     .download {
-        border: 2px solid ${colors.blue};
+        border: none;
         border-radius: 4px;
-        color: ${colors.blue};
-        background: ${colors.white};
-        font-size: 1rem;
+        color: ${colors.white};
+        background: rgb(255, 143, 0);
+        font-size: 1.1rem;
         padding: ${spacing.regular} ${spacing.regularMedium};
         user-select: none;
         outline: none;
+        cursor: pointer;
+        background: orange;
+        min-height: 2.5rem;
     }
 `;

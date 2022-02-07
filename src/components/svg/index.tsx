@@ -1,4 +1,4 @@
-import React, { ReactElement, FC } from 'react';
+import React, {ReactElement, FC} from 'react';
 import Close from './icons/close.svg';
 import FpLogo from './icons/fp-logo.svg';
 import Github from './icons/github.svg';
@@ -11,7 +11,7 @@ import Plus from './icons/plus.svg';
 import Stackoverflow from './icons/stackoverflow.svg';
 import Sun from './icons/sun.svg';
 
-const icons: { [index: string]: FC } = {
+const icons: {[index: string]: FC} = {
     Close,
     FpLogo,
     Github,
@@ -34,8 +34,9 @@ interface Props extends SVGProps {
     icon: string;
 }
 
-const SVG = ({ icon, onClick }: Props): ReactElement => {
-    const SVGIcon: FC<SVGProps> = icons[icon.charAt(0).toUpperCase() + icon.slice(1)];
+const SVG = ({icon, onClick}: Props): ReactElement => {
+    const SVGIcon: FC<SVGProps> =
+        icons[icon.charAt(0).toUpperCase() + icon.slice(1)];
 
     return <SVGIcon className={icon} onClick={onClick} />;
 };

@@ -1,9 +1,9 @@
-import React, { ReactElement, useState, useEffect, SetStateAction } from 'react';
+import React, {ReactElement, useState, useEffect, SetStateAction} from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import SVG from './svg';
 import Toggle from './toggle';
-import { spacing, theme, device } from '../util/css-util';
+import {spacing, theme, device} from '../util/css-util';
 
 declare global {
     interface Window {
@@ -13,7 +13,12 @@ declare global {
     }
 }
 
-const Header = ({ className }: { className?: string }): ReactElement => {
+const menuItems = [
+    {url: '/', text: 'Home'},
+    {url: '/resume', text: 'Resume'},
+];
+
+const Header = ({className}: {className?: string}): ReactElement => {
     const [theme, setTheme] = useState<string>('');
 
     useEffect(() => {
@@ -24,23 +29,26 @@ const Header = ({ className }: { className?: string }): ReactElement => {
     return (
         <StyledHeader className={className}>
             <nav className="nav">
-                <div className="branding">
-                    <SVG icon="logo" />
-                    <Link href="/">
+                <Link href="/">
+                    <div className="branding">
+                        <SVG icon="logo" />
                         <a className="name">J Schilders</a>
-                    </Link>
-                </div>
+                    </div>
+                </Link>
                 <div className="links">
-                    <Link href="/">
-                        <a>About me</a>
-                    </Link>
-                    <Link href="/resume">
-                        <a>Resume</a>
-                    </Link>
+                    {menuItems.map(({url, text}) => (
+                        <Link key={url} href={url}>
+                            <a>{text}</a>
+                        </Link>
+                    ))}
                 </div>
                 <div className="actions">
                     <Toggle
-                        onClick={(): void => window.__setTheme(window.__theme === 'dark' ? 'light' : 'dark')}
+                        onClick={(): void =>
+                            window.__setTheme(
+                                window.__theme === 'dark' ? 'light' : 'dark'
+                            )
+                        }
                         icons={{
                             checked: <SVG icon="sun" />,
                             unchecked: <SVG icon="moon" />,
@@ -90,7 +98,7 @@ const StyledHeader = styled.header`
     svg.logo {
         width: ${spacing.large};
         height: ${spacing.large};
-        margin-right: ${spacing.mediumLarge};
+        margin-right: ${spacing.regularMedium};
 
         ${device.tabletS} {
             margin-right: 0;
@@ -129,6 +137,7 @@ const StyledHeader = styled.header`
     .branding {
         display: flex;
         height: 100%;
+        cursor: pointer;
 
         .name {
             margin: auto;

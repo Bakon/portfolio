@@ -1,21 +1,21 @@
-import { createGlobalStyle } from 'styled-components';
-import { colors } from './css-util';
+import {createGlobalStyle} from 'styled-components';
+import {colors} from './css-util';
 
-const lightTheme: { [key: string]: string } = {
+const lightTheme = {
     background: colors.white,
     color: colors.text,
     link: colors.blue,
     seperator: colors.lightGray,
 };
 
-const darkTheme: { [key: string]: string } = {
+const darkTheme = {
     background: colors.dark,
     color: colors.white,
     link: colors.lightBlue,
     seperator: colors.darkGray,
 };
 
-const Stylesheet = createGlobalStyle`
+export const Stylesheet = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
@@ -73,9 +73,7 @@ const Stylesheet = createGlobalStyle`
         }
 
         .thumb.fade {
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms !important;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
         }
     }
 `;
-
-export default Stylesheet;
