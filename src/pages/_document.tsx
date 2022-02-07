@@ -53,7 +53,7 @@ export default class extends Document {
                 <style
                     dangerouslySetInnerHTML={{
                         __html: `
-                            svg: {
+                            svg {
                                 width: 0;
                                 height: 0;
                                 max-height: 0;
