@@ -45,4 +45,9 @@ const StyledFooter = styled.footer`
     a + a {
         margin-left: ${spacing.large};
     }
+
+    span {
+        width: 100%;
+        text-align: center;
+    }
 `;
