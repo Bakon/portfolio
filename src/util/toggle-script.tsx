@@ -1,12 +1,10 @@
 import React, {ReactElement} from 'react';
 
-// a common issue with dark mode is that on initial render, the screen is white.
-// we inject this script before that initial render so that won't happen.
-export const ThemeScript = (): ReactElement => (
+const ThemeScript = (): ReactElement => (
     <script
         dangerouslySetInnerHTML={{
             __html: `
-                (function() {
+                (function () {
                     window.__onThemeChange = () => {};
                     let preferredTheme;
 
@@ -33,9 +31,9 @@ export const ThemeScript = (): ReactElement => (
 
                     const systemPreferences = window.matchMedia('(prefers-color-scheme: dark)');
 
-                    systemPreferences.addListener((event) => {
-                        return window.__setTheme(event.matches ? 'dark' : 'light');
-                    })
+                    systemPreferences.addListener((event) =>
+                        window.__setTheme(event.matches ? 'dark' : 'light')
+                    );
 
                     setTheme(preferredTheme || (systemPreferences.matches ? 'dark' : 'light'));
                 })();
@@ -43,3 +41,5 @@ export const ThemeScript = (): ReactElement => (
         }}
     />
 );
+
+export default ThemeScript;
