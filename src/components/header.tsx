@@ -95,20 +95,9 @@ const StyledHeader = styled.header`
         }
     }
 
-    svg {
-        width: 18px;
-        height: 18px;
-        max-width: 18px;
-        max-height: 18px;
-        min-width: 18px;
-        min-height: 18px;
-    }
-
     svg.logo {
         width: ${spacing.large};
-        max-width: ${spacing.large};
         height: ${spacing.large};
-        max-height: ${spacing.large};
         margin-right: ${spacing.regularMedium};
 
         ${device.tabletS} {

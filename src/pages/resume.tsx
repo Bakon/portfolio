@@ -12,6 +12,11 @@ const icons = [
         label: 'View LinkedIn profile',
     },
     {
+        url: 'https://github.com/bakon',
+        logo: 'github',
+        label: 'View GitHub profile',
+    },
+    {
         url: 'mailto:julioschilders@gmail.com?subject=Mail from portfolio',
         logo: 'gmail',
         label: 'Send email',
@@ -286,12 +291,8 @@ const StyledResume = styled.main`
 
         svg {
             margin-left: -2px;
-            width: 56px;
-            height: 56px;
             min-width: 56px;
             min-height: 56px;
-            max-width: 56px;
-            max-height: 56px;
         }
 
         img {
@@ -319,11 +320,7 @@ const StyledResume = styled.main`
 
     svg {
         width: ${spacing.mediumLarge};
-        max-width: ${spacing.mediumLarge};
-        min-width: ${spacing.mediumLarge};
         height: ${spacing.mediumLarge};
-        max-height: ${spacing.mediumLarge};
-        min-height: ${spacing.mediumLarge};
 
         &.github {
             border-radius: 50%;
