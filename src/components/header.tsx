@@ -97,7 +97,9 @@ const StyledHeader = styled.header`
 
     svg.logo {
         width: ${spacing.large};
+        max-width: ${spacing.large};
         height: ${spacing.large};
+        max-height: ${spacing.large};
         margin-right: ${spacing.regularMedium};
 
         ${device.tabletS} {

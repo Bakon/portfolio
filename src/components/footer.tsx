@@ -32,6 +32,8 @@ const StyledFooter = styled.footer`
     svg {
         width: ${spacing.mediumExtraLarge};
         height: ${spacing.mediumExtraLarge};
+        max-width: ${spacing.mediumExtraLarge};
+        max-height: ${spacing.mediumExtraLarge};
 
         &.github {
             border-radius: 50%;

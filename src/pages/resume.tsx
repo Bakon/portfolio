@@ -290,6 +290,8 @@ const StyledResume = styled.main`
             height: 56px;
             min-width: 56px;
             min-height: 56px;
+            max-width: 56px;
+            max-height: 56px;
         }
 
         img {
@@ -317,8 +319,10 @@ const StyledResume = styled.main`
 
     svg {
         width: ${spacing.mediumLarge};
+        max-width: ${spacing.mediumLarge};
         min-width: ${spacing.mediumLarge};
         height: ${spacing.mediumLarge};
+        max-height: ${spacing.mediumLarge};
         min-height: ${spacing.mediumLarge};
 
         &.github {
