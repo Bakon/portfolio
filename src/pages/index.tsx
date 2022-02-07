@@ -23,11 +23,10 @@ export default function Main(): ReactElement<NextPage> {
                     most knowledgeable in React.
                 </p>
                 <p>
-                    I like to build (web) applications using JavaScript,
-                    TypeScript and React. <br /> I enjoy the fun little
-                    challenges that come with software engineering.
+                    I enjoy the fun little challenges that come with software
+                    engineering.
                     <br /> There&apos;s always something new to learn, things to
-                    improve at, and many problems to solve
+                    improve at, and problems to solve.
                 </p>
                 <p>
                     I&apos;m currently employed full-time at{' '}
