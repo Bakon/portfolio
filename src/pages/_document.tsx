@@ -30,7 +30,12 @@ export default class extends Document {
 
             return {
                 ...initialProps,
-                styles: [initialProps.styles, stylesheet.getStyleElement()],
+                styles: (
+                    <>
+                        {initialProps.styles}
+                        {stylesheet.getStyleElement()}
+                    </>
+                ),
             };
         } finally {
             stylesheet.seal();
