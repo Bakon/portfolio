@@ -1,6 +1,6 @@
 import React, {ReactElement} from 'react';
 
-const ThemeScript = (): ReactElement => (
+export const ThemeScript = (): ReactElement => (
     <script
         dangerouslySetInnerHTML={{
             __html: `
@@ -41,5 +41,3 @@ const ThemeScript = (): ReactElement => (
         }}
     />
 );
-
-export default ThemeScript;
