@@ -50,6 +50,20 @@ export default class extends Document {
                     content="Hiya, I'm Julio Schilders 👋  Welcome to my little dot on the internet! I'm a social and passionate software engineer that's not afraid to ask questions. My strongest programming language is JavaScript, I'm most knowledgeable in React."
                 />
                 <meta name="author" content="Julio Schilders" />
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            svg: {
+                                width: 0;
+                                height: 0;
+                                max-height: 0;
+                                max-width: 0;
+                                min-width: 0;
+                                min-height: 0;
+                            }
+                    `,
+                    }}
+                />
                 <Head />
                 <body>
                     <ThemeScript />
