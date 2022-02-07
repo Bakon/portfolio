@@ -39,8 +39,8 @@ export default class extends Document {
                     }}
                 />
                 <Head />
-                <ThemeScript />
                 <body>
+                    <ThemeScript />
                     <Main />
                     <NextScript />
                 </body>
