@@ -135,7 +135,7 @@ export default function Resume(): ReactElement<NextPage> {
             <section className="experience">
                 <h2 className="header">Experience</h2>
                 <div className="company">
-                    <SVG icon="fpLogo" />
+                    <SVG icon="floorplanner" />
                     <div className="company-details">
                         <span className="title">Front-end Engineer</span>
                         <span className="location">
@@ -151,11 +151,7 @@ export default function Resume(): ReactElement<NextPage> {
                     </div>
                 </div>
                 <div className="company">
-                    <img
-                        src="/images/codecrashers-logo.png"
-                        alt="logo CodeCrashers"
-                        className="codecrashers"
-                    />
+                    <SVG icon="codecrashers" />
                     <div className="company-details">
                         <span className="title">Lead Front-end Engineer</span>
                         <span className="location">
@@ -174,27 +170,19 @@ export default function Resume(): ReactElement<NextPage> {
             <section className="experience">
                 <h2 className="header">Education</h2>
                 <div className="company">
-                    <img
-                        className="rea"
-                        src="/images/rea-logo.png"
-                        alt="logo REA"
-                    />
-                    <div className="company-details">
-                        <span className="title">Web development</span>
-                        <span className="location">REA, Eindhoven</span>
-                        <span className="date">February 2018 - July 2020</span>
-                    </div>
-                </div>
-                <div className="company">
-                    <img
-                        className="curio"
-                        src="/images/curio-logo.jpeg"
-                        alt="logo Curio"
-                    />
+                    <SVG icon="curio" />
                     <div className="company-details">
                         <span className="title">Software development</span>
                         <span className="location">Curio, Breda</span>
                         <span className="date">August 2015 - July 2017</span>
+                    </div>
+                </div>
+                <div className="company">
+                    <SVG icon="rea" />
+                    <div className="company-details">
+                        <span className="title">Web development</span>
+                        <span className="location">REA, Eindhoven</span>
+                        <span className="date">February 2018 - July 2020</span>
                     </div>
                 </div>
             </section>
@@ -260,18 +248,20 @@ const StyledResume = styled.main`
             display: flex;
             flex-flow: column wrap;
             align-items: flex-start;
+            margin-left: ${spacing.medium};
         }
 
-        span {
-            line-height: 1.4;
+        .title {
+            font-size: 1.3rem;
+            line-height: 1.2;
         }
 
         .location {
-            font-size: 0.8rem;
+            font-size: 1.1rem;
         }
 
         .date {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             display: flex;
             flex-flow: row wrap;
             color: #bebebe;
@@ -290,31 +280,17 @@ const StyledResume = styled.main`
         }
 
         svg {
-            margin-left: -2px;
-            min-width: 56px;
-            min-height: 56px;
+            width: 3.5rem;
+            height: 3.5rem;
         }
 
         img {
             border-radius: 50%;
             margin-right: ${spacing.medium};
-            border: 4px solid;
             width: 52px;
             height: 52px;
             min-width: 52px;
             min-height: 52px;
-
-            &.codecrashers {
-                border-color: ${colors.ccBlack};
-            }
-
-            &.rea {
-                border-color: ${colors.reaGreen};
-            }
-
-            &.curio {
-                border-color: ${colors.curioYellow};
-            }
         }
     }
 
@@ -336,8 +312,8 @@ const StyledResume = styled.main`
             background: radial-gradient(${colors.white} 60%, transparent);
         }
 
-        &.fpLogo {
-            margin-right: ${spacing.medium};
+        &.floorplanner,
+        &.codecrashers {
         }
     }
 

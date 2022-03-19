@@ -47,6 +47,10 @@ export const Stylesheet = createGlobalStyle`
             h1, h2, h3, h4, h5, h6 {
                 color: ${lightTheme.color};
             }
+
+            svg {
+                fill: ${lightTheme.color};
+            }
         }
 
         &.dark {
@@ -69,6 +73,11 @@ export const Stylesheet = createGlobalStyle`
             span, p,
             h1, h2, h3, h4, h5, h6 {
                 color: ${darkTheme.color};
+            }
+
+
+            svg {
+                fill: ${darkTheme.color};
             }
         }
 
