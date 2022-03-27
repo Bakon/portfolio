@@ -253,11 +253,11 @@ const StyledResume = styled.main`
 
         .title {
             font-size: 1.3rem;
-            line-height: 1.2;
+            line-height: 1.3;
         }
 
         .location {
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .date {

@@ -4,7 +4,7 @@ import {AppProps} from 'next/app';
 import {Stylesheet} from '../util/stylesheet';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import {spacing, theme} from '../util/css-util';
+import {spacing, theme, device} from '../util/css-util';
 
 export default function App({Component, pageProps}: AppProps): ReactElement {
     return (
@@ -31,6 +31,10 @@ const StyledContainer = styled.div`
         max-width: ${spacing.container};
         padding: 0 ${spacing.mediumLarge};
         color: ${theme.text};
+
+        ${device.mobileL} {
+            padding: ${spacing.medium};
+        }
 
         section + section {
             margin-top: ${spacing.extraLarge};

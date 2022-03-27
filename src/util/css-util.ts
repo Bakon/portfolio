@@ -59,9 +59,7 @@ const screenSizes = {
     tabletL: 875,
 };
 
-export const device = Object.keys(screenSizes).reduce((acc: {}, cur): {
-    [key: string]: string;
-} => {
+export const device = Object.keys(screenSizes).reduce((acc, cur) => {
     acc[cur] = `@media (max-width: ${screenSizes[cur]}px)`;
 
     return acc;
