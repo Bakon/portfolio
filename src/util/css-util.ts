@@ -16,7 +16,6 @@ export const colors = {
     black: '#181717',
     dark: '#282c34',
     text: '#3f4954',
-    ccBlack: '#141414',
     // white
     white: '#f5f5f5',
     snow: '#fafafa',
@@ -28,11 +27,6 @@ export const colors = {
     blue: '#1085d1',
     lightBlue: '#00bfff',
     spaceBlue: '#033352',
-    // greens
-    green: '#5aac44',
-    reaGreen: '#159499',
-    // yellows
-    curioYellow: '#FFCC00',
 };
 
 const baseSpacing = '0.3125rem';

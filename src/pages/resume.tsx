@@ -248,7 +248,7 @@ const StyledResume = styled.main`
             display: flex;
             flex-flow: column wrap;
             align-items: flex-start;
-            margin-left: ${spacing.medium};
+            margin-left: 1rem;
         }
 
         .title {
@@ -282,6 +282,7 @@ const StyledResume = styled.main`
         svg {
             width: 3.5rem;
             height: 3.5rem;
+            margin-left: 0.25rem;
         }
 
         img {
