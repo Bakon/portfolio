@@ -11,14 +11,7 @@ export default function Main(): ReactElement<NextPage> {
                 <title>Julio Schilders | About me</title>
                 <link rel="canonical" href="https://jschilders.dev" />
             </Head>
-            <section
-                onDoubleClick={(): Window | null =>
-                    window.open(
-                        '//floorplanner.com/360vr/63225783-1648214142',
-                        '_blank'
-                    )
-                }
-            >
+            <section>
                 <h1>Hiya, I&apos;m Julio Schilders 👋</h1>
                 <h2 className="subheading">
                     Welcome to my little dot on the internet!
