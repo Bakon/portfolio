@@ -43,9 +43,11 @@ export default class extends Document {
         try {
             ctx.renderPage = (): ReturnType<typeof ctx.renderPage> => {
                 return originalRenderPage({
-                    enhanceApp: (App) => (props): ReactElement => {
-                        return stylesheet.collectStyles(<App {...props} />);
-                    },
+                    enhanceApp:
+                        (App) =>
+                        (props): ReactElement => {
+                            return stylesheet.collectStyles(<App {...props} />);
+                        },
                 });
             };
 
