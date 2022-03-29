@@ -78,10 +78,6 @@ const StyledHeader = styled.header`
     background-color: ${theme.background};
     color: ${theme.text};
 
-    ${device.mobileL} {
-        padding: ${spacing.medium};
-    }
-
     a {
         text-decoration: none;
         color: ${theme.link};

@@ -12,7 +12,7 @@ export default function Main(): ReactElement<NextPage> {
                 <link rel="canonical" href="https://jschilders.dev" />
             </Head>
             <section
-                onDoubleClick={(): void =>
+                onDoubleClick={(): Window | null =>
                     window.open(
                         '//floorplanner.com/360vr/63225783-1648214142',
                         '_blank'
