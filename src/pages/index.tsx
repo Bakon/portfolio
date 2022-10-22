@@ -55,12 +55,9 @@ export default function Main(): ReactElement<NextPage> {
                     And it&apos;s all in the browser! Pretty cool right?
                 </p>
                 <p>
-                    I also work as a freelance Lead Front-end Engineer at
-                    CodeCrashers, which is an upcoming platform where
-                    individuals and companies will be able to purchase a license
-                    to view courses and assignments.
-                    <br /> These assignments will be reviewed, and you will get
-                    feedback from real teachers and developers!
+                    Sometimes I also do some freelance work for CodeCrashers,
+                    which is a platform where schools will be able to purchase a
+                    license to view courses and assignments.
                 </p>
                 <p>
                     My tiny website is quite empty as you can see, but if

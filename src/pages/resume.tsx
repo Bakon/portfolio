@@ -47,30 +47,11 @@ const getElapsedTime = (dateFrom: Date, dateTo: Date): string => {
 const resumeData = [
     {
         header: '(Programming) languages',
-        items: [
-            'JavaScript',
-            'TypeScript',
-            'PHP',
-            'Python',
-            'SQL',
-            'XML',
-            'HTML',
-            'CSS',
-        ],
+        items: ['JavaScript', 'TypeScript', 'PHP', 'SQL'],
     },
     {
         header: 'Libraries & Frameworks',
-        items: [
-            'React',
-            'Redux',
-            'Electron',
-            'Next',
-            'Express',
-            'Angular',
-            'jQuery',
-            'Laravel',
-            'Django',
-        ],
+        items: ['React', 'Redux', 'Next', 'Laravel'],
     },
     {
         header: 'Other tools',
@@ -78,17 +59,14 @@ const resumeData = [
             'Git',
             'Node',
             'NPM',
-            'Yarn',
-            'Lerna',
             'Webpack',
             'Rollup',
             'Gulp',
-            'Pug',
             'Babel',
+            'Pug / Jade',
             'i18next',
             'Docker',
             'AWS',
-            'WordPress',
             'MySQL',
             'Sass',
             'CSS-Modules',
@@ -134,57 +112,27 @@ export default function Resume(): ReactElement<NextPage> {
             ))}
             <section className="experience">
                 <h2 className="header">Experience</h2>
-                <div className="company">
-                    <SVG icon="floorplanner" />
-                    <div className="company-details">
-                        <span className="title">Front-end Engineer</span>
-                        <span className="location">
-                            Floorplanner, Rotterdam (Full-time)
-                        </span>
-                        <span className="date">
-                            <span>October 2019 - Present</span>
-                            <span>
-                                ({getElapsedTime(new Date(2019, 9), new Date())}
-                                )
-                            </span>
-                        </span>
-                    </div>
-                </div>
-                <div className="company">
-                    <SVG icon="codecrashers" />
-                    <div className="company-details">
-                        <span className="title">Lead Front-end Engineer</span>
-                        <span className="location">
-                            CodeCrashers, Eindhoven (Freelance)
-                        </span>
-                        <span className="date">
-                            <span>January 2022 - Present</span>
-                            <span>
-                                ({getElapsedTime(new Date(2022, 0), new Date())}
-                                )
-                            </span>
-                        </span>
-                    </div>
-                </div>
-            </section>
-            <section className="experience">
-                <h2 className="header">Education</h2>
-                <div className="company">
-                    <SVG icon="curio" />
-                    <div className="company-details">
-                        <span className="title">Software development</span>
-                        <span className="location">Curio, Breda</span>
-                        <span className="date">August 2015 - July 2017</span>
-                    </div>
-                </div>
-                <div className="company">
-                    <SVG icon="rea" />
-                    <div className="company-details">
-                        <span className="title">Web development</span>
-                        <span className="location">REA, Eindhoven</span>
-                        <span className="date">February 2018 - July 2020</span>
-                    </div>
-                </div>
+                <Experience
+                    icon="floorplanner"
+                    title="Software Engineer"
+                    location="Floorplanner, Rotterdam (Full-time)"
+                    date="October 2019 - Present"
+                    elapsed={getElapsedTime(new Date(2019, 9), new Date())}
+                />
+                <Experience
+                    icon="codecrashers"
+                    title="Software Engineer"
+                    location="CodeCrashers, Eindhoven (Freelance)"
+                    date="January 2022 - Present"
+                    elapsed={getElapsedTime(new Date(2022, 0), new Date())}
+                />
+                <Experience
+                    icon="rea"
+                    title="Intern supervisor"
+                    location="REA College Eindhoven, Eindhoven (Freelance)"
+                    date="October 2022 - Present"
+                    elapsed={getElapsedTime(new Date(2022, 9), new Date())}
+                />
             </section>
             <section>
                 <a
@@ -195,6 +143,34 @@ export default function Resume(): ReactElement<NextPage> {
                 </a>
             </section>
         </StyledResume>
+    );
+}
+
+function Experience({
+    icon,
+    title,
+    location,
+    date,
+    elapsed,
+}: {
+    icon: string;
+    title: string;
+    location: string;
+    date: string;
+    elapsed: string;
+}): ReactElement {
+    return (
+        <div className="company">
+            <SVG icon={icon} />
+            <div className="company-details">
+                <span className="title">{title}</span>
+                <span className="location">{location}</span>
+                <span className="date">
+                    <span>{date}</span>
+                    <span>({elapsed})</span>
+                </span>
+            </div>
+        </div>
     );
 }
 
@@ -239,7 +215,7 @@ const StyledResume = styled.main`
     }
 
     .company {
-        margin: 1rem 0 1.5rem;
+        margin: 1rem 0 2rem;
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
