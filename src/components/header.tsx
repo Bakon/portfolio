@@ -18,7 +18,11 @@ const menuItems = [
     {url: '/resume', text: 'Resume'},
 ];
 
-const Header = ({className}: {className?: string}): ReactElement => {
+export default function Header({
+    className,
+}: {
+    className?: string;
+}): ReactElement {
     const [theme, setTheme] = useState<string>('');
 
     useEffect(() => {
@@ -58,9 +62,7 @@ const Header = ({className}: {className?: string}): ReactElement => {
             </nav>
         </StyledHeader>
     );
-};
-
-export default Header;
+}
 
 const StyledHeader = styled.header`
     display: flex;

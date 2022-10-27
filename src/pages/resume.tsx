@@ -23,11 +23,11 @@ const icons = [
     },
 ];
 
-const makeStringPlural = (number: number, string: string): string => {
+function makeStringPlural(number: number, string: string): string {
     return number === 1 ? `${number} ${string}` : `${number} ${string}s`;
-};
+}
 
-const getElapsedTime = (dateFrom: Date, dateTo: Date): string => {
+function getElapsedTime(dateFrom: Date, dateTo: Date): string {
     const totalMonths =
         dateTo.getMonth() -
         dateFrom.getMonth() +
@@ -42,7 +42,7 @@ const getElapsedTime = (dateFrom: Date, dateTo: Date): string => {
     if (years) return formattedYears;
 
     return formattedMonths;
-};
+}
 
 const resumeData = [
     {

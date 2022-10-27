@@ -3,16 +3,20 @@ import styled from 'styled-components';
 import SVG from './svg';
 import {spacing, colors, theme, multiply} from '../util/css-util';
 
-const Footer = ({className}: {className?: string}): ReactElement => (
-    <StyledFooter className={className}>
-        <span>&copy; Julio Schilders</span>
-        <a href="https://github.com/Bakon" aria-label="View GitHub profile">
-            <SVG icon="github" />
-        </a>
-    </StyledFooter>
-);
-
-export default Footer;
+export default function Footer({
+    className,
+}: {
+    className?: string;
+}): ReactElement {
+    return (
+        <StyledFooter className={className}>
+            <span>&copy; Julio Schilders</span>
+            <a href="https://github.com/Bakon" aria-label="View GitHub profile">
+                <SVG icon="github" />
+            </a>
+        </StyledFooter>
+    );
+}
 
 const StyledFooter = styled.footer`
     display: flex;

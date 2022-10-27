@@ -2,13 +2,15 @@ import React, {ReactElement, SetStateAction, useState} from 'react';
 import styled from 'styled-components';
 import {colors} from '../util/css-util';
 
-type Props = {
+export default function Toggle({
+    className,
+    onClick,
+    icons,
+}: {
     onClick: () => SetStateAction<void>;
     icons: {[key: string]: ReactElement};
     className?: string;
-};
-
-const Toggle = ({className, onClick, icons}: Props): ReactElement => {
+}): ReactElement {
     const [hasClicked, toggleFirstClick] = useState<boolean>(false);
 
     return (
@@ -28,9 +30,7 @@ const Toggle = ({className, onClick, icons}: Props): ReactElement => {
             </div>
         </StyledToggle>
     );
-};
-
-export default Toggle;
+}
 
 const StyledToggle = styled.div`
     display: flex;
