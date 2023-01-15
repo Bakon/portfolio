@@ -19,14 +19,15 @@ export default function Main(): ReactElement<NextPage> {
                 <p>
                     I&apos;m a social and passionate software engineer
                     that&apos;s not afraid to ask questions. <br />
-                    My strongest programming language is JavaScript, I&apos;m
-                    most knowledgeable in React.
+                    My strongest programming language is JavaScript and favorite
+                    framework is React. <br />
+                    I&apos;m most knowledgeable in front-end development.
                 </p>
                 <p>
                     I enjoy the fun little challenges that come with software
                     engineering.
-                    <br /> There&apos;s always something new to learn, things to
-                    improve at, and problems to solve.
+                    <br /> There&apos;s always something new to learn, and new
+                    problems to solve.
                 </p>
                 <p>
                     I&apos;m currently employed full-time at{' '}
@@ -52,12 +53,6 @@ export default function Main(): ReactElement<NextPage> {
                     </a>{' '}
                     is an architectural visualisation tool, which let&apos;s you
                     draw beautiful 2D &amp; 3D floorplans. <br />
-                    And it&apos;s all in the browser! Pretty cool right?
-                </p>
-                <p>
-                    Sometimes I also do some freelance work for CodeCrashers,
-                    which is a platform where schools will be able to purchase a
-                    license to view courses and assignments.
                 </p>
                 <p>
                     My tiny website is quite empty as you can see, but if

@@ -63,7 +63,6 @@ const resumeData = [
             'Rollup',
             'Gulp',
             'Babel',
-            'Pug / Jade',
             'i18next',
             'Docker',
             'AWS',
@@ -123,15 +122,21 @@ export default function Resume(): ReactElement<NextPage> {
                     icon="codecrashers"
                     title="Software Engineer"
                     location="CodeCrashers, Eindhoven (Freelance)"
-                    date="January 2022 - Present"
-                    elapsed={getElapsedTime(new Date(2022, 0), new Date())}
+                    date="January 2022 - January 2023"
+                    elapsed={getElapsedTime(
+                        new Date(2022, 0),
+                        new Date(2023, 0)
+                    )}
                 />
                 <Experience
                     icon="rea"
                     title="Intern supervisor"
                     location="REA College Eindhoven, Eindhoven (Freelance)"
-                    date="October 2022 - Present"
-                    elapsed={getElapsedTime(new Date(2022, 9), new Date())}
+                    date="October 2022 - December 2022"
+                    elapsed={getElapsedTime(
+                        new Date(2022, 9),
+                        new Date(2022, 11)
+                    )}
                 />
             </section>
             <section>
@@ -287,10 +292,6 @@ const StyledResume = styled.main`
             border-radius: 4px;
             background: ${colors.white};
             background: radial-gradient(${colors.white} 60%, transparent);
-        }
-
-        &.floorplanner,
-        &.codecrashers {
         }
     }
 
